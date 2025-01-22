@@ -1,0 +1,54 @@
+.trumbowyg-box svg, .trumbowyg-modal svg {
+  width: 20px;
+  height: 100%;
+  color: #222;
+  fill: #222;
+}
+
+:root   {
+    --tbw-cell-vertical-padding: 4px;
+    --tbw-cell-horizontal-padding: 8px;
+    --tbw-cell-line-height: 1.5em;
+}
+
+.trumbowyg-box table {
+    margin-bottom: var(--tbw-cell-line-height);
+}
+
+.trumbowyg-box th, .trumbowyg-box td {
+    height: calc(var(--tbw-cell-vertical-padding) * 2 + var(--tbw-cell-line-height));
+    min-width: calc(var(--tbw-cell-horizontal-padding) * 2);
+    padding: var(--tbw-cell-vertical-padding) var(--tbw-cell-horizontal-padding);
+    border: 1px solid #e7eaec!important;
+	
+}
+
+.trumbowyg-box.trumbowyg-editor-hidden .trumbowyg-textarea  {
+	background-color: #fff;
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.trumbowyg-box *, .trumbowyg-box ::before, .trumbowyg-box ::after, .trumbowyg-modal *, .trumbowyg-modal ::before, .trumbowyg-modal ::after {
+	
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.trumbowyg-editor-box   {
+	background-color: #ffffff;
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.trumbowyg-editor-box .breadcrumb, .darkwell, .form-control, .hero-unit, .progress, .uneditable-input, code, input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="text"], input[type="password"], input[type="datetime"], input[type="week"], input[type="email"], input[type="url"], input[type="tel"], input[type="color"], input[type="number"], input[type="search"], pre, select, textarea {
+  box-shadow: 0 0px 0 rgba(255,255,255,.1),0 0px 0px 0 rgba(0,0,0,.8) inset;
+}
+
+.trumbowyg-editor-box input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input[type="text"], input[type="password"], input[type="datetime"], input[type="week"], input[type="email"], input[type="url"], input[type="tel"], input[type="color"], input[type="number"], input[type="search"], select, textarea {
+  border-radius: 0px!important;
+
+}
+.trumbowyg-editor-box table {
+  background-color: #ffffff!important;
+}
+.trumbowyg-editor-box th {
+  background-color: #ecf0f1!important;
+}

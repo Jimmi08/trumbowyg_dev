@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e107Plugin name="TrumboWYG" lan="LAN_PLUGIN_TRUMBOWYG_NAME" version="1.1" date="2017-04-26" compatibility="2.0" installRequired="true">
+	<author name="Jimako" url=""/>
+	<summary lan="LAN_PLUGIN_TRUMBOWYG_SUMM">e107 integration for TrumboWyg - A lightweight WYSIWYG editor</summary>
+	<description lan="LAN_PLUGIN_TRUMBOWYG_DESC">Light, translatable and customisable jQuery plugin Beautiful design, generates semantic code, comes with a powerful API</description>
+	<category>misc</category>
+	<keywords>
+		<word>trumbowyg</word>
+		<word>editor</word>
+		<word>wysiwyg</word>
+	</keywords>
+	<copyright>GNU/GPL</copyright>
+	<adminLinks>
+		<link url='admin_config.php' description='LAN_CONFIGURE' icon128="images/trumbowyg.svg" icon='images/trumbowyg.svg' iconSmall='images/trumbowyg.svg' primary='true' >LAN_CONFIGURE</link>
+	</adminLinks>
+	<pluginPrefs>
+		<pref name="trumbowyg_btns"></pref>
+ 		<pref name="trumbowyg_semantic">1</pref>
+        <pref name="trumbowyg_removeformatPasted">0</pref>
+        <pref name="resetCss">0</pref>
+        <pref name="autogrow">0</pref>
+        <pref name="imageWidthModalEdit">0</pref>
+        <pref name="urlProtocol">0</pref>
+        <pref name="linkTargets">0</pref>
+		<pref name="minimalLinks'">0</pref>
+ 		<pref name="tagsToRemove"></pref>
+        <pref name="tagsToKeep"><![CDATA[["hr", "img", "embed", "iframe", "input"]]]></pref>
+        <pref name="tagClasses"></pref>
+        <pref name="btns"></pref>
+        <pref name="semantic"></pref>
+        <pref name="plugin_base64">1</pref>
+        <pref name="plugin_cleanpaste"></pref>
+        <pref name="plugin_emoji"></pref>
+        <pref name="plugin_fontsize"></pref>
+        <pref name="plugin_fontfamily"></pref>
+        <pref name="plugin_colors"></pref>
+        <pref name="plugin_lineheight"></pref>
+        <pref name="plugin_preformatted"></pref>
+        <pref name="plugin_table"></pref>
+        <pref name="plugin_template"></pref>      
+	</pluginPrefs>
+ 
+</e107Plugin>
