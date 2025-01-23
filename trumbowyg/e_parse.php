@@ -104,6 +104,8 @@ class trumbowyg_parse
 	 */
 	function toWYSIWYG($text, $param = array())
 	{
+		$tp = e107::getParser();
+
 		// If TrumboWYG is not in use, we returns with the original text.
 		if (!$this->trumboWYGisInUse())
 		{
@@ -111,14 +113,14 @@ class trumbowyg_parse
 		}
  
 		$isHtml = false;
+		$content = $text;
+		$content 		= str_replace("{e_BASE}", e_HTTP, $content); // We want {e_BASE} in the final data going to the DB, but not the editor.
+		$srch 			= array("<!-- bbcode-html-start -->", "<!-- bbcode-html-end -->", "[html]", "[/html]");
+		$content 		= str_replace($srch, "", $content);
+		$content 		= $tp->parseBBTags($content, true); // parse the <bbcode> tag so we see the HTML equivalent while editing!
+		$content 		= e107::getBB()->parseBBCodes($content);
 
-		// If text contains [html], need to parse it to get HTML contents.
-		if (substr($text, 0, 6) == '[html]')
-		{
-			$tp = e107::getParser();
-			$text = $tp->toHTML($text, true);
-			$isHtml = true;
-		}
+		$text = $content;
 
 		// Convert special HTML entities back to characters.
 		$text = htmlspecialchars_decode($text);
@@ -126,6 +128,8 @@ class trumbowyg_parse
 		// Remove HTML comments.
 		$text = preg_replace('/<!--(.*)-->/Uis', '', $text);
 
+		if(empty($text)) $text = "&nbsp;";  //to replace content see #5408
+ ;
 		return $text;
 	}
 
