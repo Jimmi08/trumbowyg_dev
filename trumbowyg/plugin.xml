@@ -14,6 +14,7 @@
 		<link url='admin_config.php' description='LAN_CONFIGURE' icon128="images/trumbowyg.svg" icon='images/trumbowyg.svg' iconSmall='images/trumbowyg.svg' primary='true' >LAN_CONFIGURE</link>
 	</adminLinks>
 	<pluginPrefs>
+        <pref name="enableEditor"></pref>
 		<pref name="trumbowyg_btns"></pref>
  		<pref name="trumbowyg_semantic">1</pref>
         <pref name="trumbowyg_removeformatPasted">0</pref>
@@ -24,7 +25,7 @@
         <pref name="linkTargets">0</pref>
 		<pref name="minimalLinks'">0</pref>
  		<pref name="tagsToRemove"></pref>
-        <pref name="tagsToKeep"><![CDATA[["hr", "img", "embed", "iframe", "input"]]]></pref>
+        <pref name="tagsToKeep">hr,img,embed,iframe,input</pref>
         <pref name="tagClasses"></pref>
         <pref name="btns"></pref>
         <pref name="semantic"></pref>

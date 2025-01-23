@@ -52,14 +52,13 @@ define("LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP", "Wanneer deze instellin
 define("LAN_TRUMBOWYG_ADMIN_01", "Dropdown-pictogram kan veranderen naar het actieve subknoppictogram met deze optie ingeschakeld. Deze functionaliteit is momenteel uitgeschakeld. De instellingen worden niet toegepast.");
 define("LAN_TRUMBOWYG_ADMIN_02", "Standaardsemantiek is niet uitgeschakeld. Deze instellingen worden niet toegepast.");
 define("LAN_TRUMBOWYG_ADMIN_03", "Custom Button Pane is currently disabled. These settings will not be applied.");
-
+define("LAN_TRUMBOWYG_ADMIN_04", "Enable TrumboWyg Editor");
+define("LAN_TRUMBOWYG_ADMIN_04_HELP", "Disable editor if you are using/testing core tinymce editor.");
 
 
 define("LAN_TRUMBOWYG_ADMIN_OPT_01", "Ingeschakeld");
 define("LAN_TRUMBOWYG_ADMIN_OPT_02", "Uitgeschakeld");
 define("LAN_TRUMBOWYG_ADMIN_OPT_03", "Auto");
-
-
 
 
 define("LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP", "Wanneer deze optie is ingeschakeld, worden de tekstlabels op de knoppen verborgen en worden alleen de pictogrammen weergegeven.");

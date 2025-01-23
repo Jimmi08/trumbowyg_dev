@@ -112,7 +112,8 @@ class trumbowyg_admin_ui extends e_admin_ui
 	 */
 
 	protected $prefs = array(
-		'trumbowyg_btns'                => array('title' => LAN_TRUMBOWYG_BTNS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_BTNS_HELP),
+		'enableEditor'  		=> array('title' => LAN_TRUMBOWYG_ADMIN_04, 'type' => 'boolean', 'data' => 'int', 'help' => ""),
+		'trumbowyg_btns'        => array('title' => LAN_TRUMBOWYG_BTNS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_BTNS_HELP),
 		'changeActiveDropdownIcon' => array('title' => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP),
 		'hideButtonTexts' => array('title' => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP),
 		'trumbowyg_semantic'            => array('title' => LAN_TRUMBOWYG_SEMANTIC, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_SEMANTIC_HELP),
@@ -129,6 +130,7 @@ class trumbowyg_admin_ui extends e_admin_ui
 	{
 		$caption = LAN_HELP;
 		$text = '';
+		$text .= "<b>" . LAN_TRUMBOWYG_ADMIN_04 . "</b><br>" . LAN_TRUMBOWYG_ADMIN_04_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_BTNS . "</b><br>" . LAN_TRUMBOWYG_BTNS_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON . "</b><br>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS . "</b><br>" . LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP . "<br><hr>";
