@@ -79,7 +79,7 @@ class trumbowyg_parse
 
 		if ($type == 'bbarea')
 		{
-			return '[html]' . $text . '[/[html]';
+			return '[html]' . $text . '[/html]';
 		}
 
 		$fields = array(
