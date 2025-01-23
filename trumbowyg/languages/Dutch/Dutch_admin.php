@@ -51,7 +51,7 @@ define("LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP", "Wanneer deze instellin
 
 define("LAN_TRUMBOWYG_ADMIN_01", "Dropdown-pictogram kan veranderen naar het actieve subknoppictogram met deze optie ingeschakeld. Deze functionaliteit is momenteel uitgeschakeld. De instellingen worden niet toegepast.");
 define("LAN_TRUMBOWYG_ADMIN_02", "Standaardsemantiek is niet uitgeschakeld. Deze instellingen worden niet toegepast.");
-
+define("LAN_TRUMBOWYG_ADMIN_03", "Custom Button Pane is currently disabled. These settings will not be applied.");
 
 
 

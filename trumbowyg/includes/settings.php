@@ -478,7 +478,7 @@ class trumbowyg_btns_form_ui extends e_admin_form_ui
 
 		if (!$available)
 		{
-			$text = e107::getMessage()->addWarning(LAN_TRUMBOWYG_ADMIN_01)->render();
+			$text = e107::getMessage()->addWarning(LAN_TRUMBOWYG_ADMIN_03)->render();
 		}
 
 

@@ -51,7 +51,7 @@ define("LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP", "When enabled, this set
 
 define("LAN_TRUMBOWYG_ADMIN_01", "Dropdown icon can change to the active sub-button icon with this option enabled. This functionality is currently disabled. The settings will not be applied.");
 define("LAN_TRUMBOWYG_ADMIN_02", "Default Semantics is not set off. These settings will not be applied.");
-
+define("LAN_TRUMBOWYG_ADMIN_03", "Custom Button Pane is currently disabled. These settings will not be applied.");
 
 
 
