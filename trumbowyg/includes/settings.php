@@ -122,10 +122,7 @@ class trumbowyg_admin_ui extends e_admin_ui
 		'imageWidthModalEdit' => array('title' => LAN_TRUMBOWYG_IMAGE_WIDTH_MODAL_EDIT, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_IMAGE_WIDTH_MODAL_EDIT_HELP),
 		'urlProtocol'         => array('title' => LAN_TRUMBOWYG_URL_PROTOCOL, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_URL_PROTOCOL_HELP),
 		'linkTargets'         => array('title' => LAN_TRUMBOWYG_LINK_TARGETS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_LINK_TARGETS_HELP),
-		'minimalLinks'        => array('title' => LAN_TRUMBOWYG_MINIMAL_LINKS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_MINIMAL_LINKS_HELP),
-		'trumbowyg_tagsToRemove'        => array('title' => LAN_TRUMBOWYG_TAGS_TO_REMOVE, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_TAGS_TO_REMOVE_HELP),
-		'trumbowyg_tagsToKeep'          => array('title' => LAN_TRUMBOWYG_TAGS_TO_KEEP, 'type' => 'text', 'data' => 'string', 'help' => LAN_TRUMBOWYG_TAGS_TO_KEEP_HELP),
-		//	'trumbowyg_tagClasses'          => array('title' => LAN_TRUMBOWYG_TAG_CLASSES, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_TAG_CLASSES_HELP)
+		'minimalLinks'        => array('title' => LAN_TRUMBOWYG_MINIMAL_LINKS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_MINIMAL_LINKS_HELP) 
 	);
 
 	public function renderHelp()
