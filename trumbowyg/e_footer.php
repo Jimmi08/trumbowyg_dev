@@ -32,6 +32,7 @@ if($enableOn) {
 
 		$pluginPrefs = e107::pref('trumbowyg');
 
+		if ($pluginPrefs['plugin_allowtagsfrompaste']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/allowtagsfrompaste/trumbowyg.allowtagsfrompaste.min.js", 'jquery', 1);
 		if ($pluginPrefs['plugin_base64']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/base64/trumbowyg.base64.min.js", 'jquery', 1);
 		if ($pluginPrefs['plugin_emoji']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/emoji/trumbowyg.emoji.min.js", 'jquery', 1);
 		if ($pluginPrefs['plugin_cleanpaste']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/cleanpaste/trumbowyg.cleanpaste.min.js", 'jquery', 1);
@@ -64,7 +65,7 @@ if($enableOn) {
 		$trumbowygSettings = plugin_trumbowyg_configuration::getSettings();
 		// Convert to JSON for JavaScript
 		$jsonSettings = json_encode($trumbowygSettings, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
+ 
 		// Inject JavaScript
 		e107::js('footer-inline', "
 				$('.e-wysiwyg').trumbowyg($jsonSettings);

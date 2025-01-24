@@ -8,7 +8,7 @@
 define("LAN_TRUMBOWYG_ADMIN_NAV_00", "Settings");
 define("LAN_TRUMBOWYG_ADMIN_NAV_01", "Button pane");
 define("LAN_TRUMBOWYG_ADMIN_NAV_02", "Semantic");
-define("LAN_TRUMBOWYG_ADMIN_NAV_03", "Tags to remove/keep");
+define("LAN_TRUMBOWYG_ADMIN_NAV_03", "Paste Tag Sanitization");
 define("LAN_TRUMBOWYG_ADMIN_NAV_04", "Plugins");
 
 define("LAN_TRUMBOWYG_BTNS", "Enable Custom Buttons Pane");
@@ -48,6 +48,10 @@ define("LAN_TRUMBOWYG_TAGS_TO_KEEP_HELP", "Specify which HTML tags should be kep
 define("LAN_TRUMBOWYG_TAG_CLASSES_HELP", "Enable or disable the addition of CSS classes to HTML tags in the editor.");
 define("LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP", "When enabled, this setting will modify the icon of the active dropdown item to provide visual feedback.");
 
+define("LAN_TRUMBOWYG_ALLOWED_TAGS", "Custom tag whitelist");
+define("LAN_TRUMBOWYG_ALLOWED_TAGS_HELP", "Any tag pasted which is not in allowedTags list will be unwrap, only the text will be kept. ");
+define("LAN_TRUMBOWYG_ALLOWED_TAGS_HELP2", "RemoveformatPasted must be set to FALSE since it was applied prior to pasteHandlers, or else it will be useless ");
+define("LAN_TRUMBOWYG_ALLOWED_TAGS_HELP3", "It is most advisable to use along with the cleanpaste plugin, or else you'd end up with dirty markup. ");
 
 define("LAN_TRUMBOWYG_ADMIN_01", "Dropdown icon can change to the active sub-button icon with this option enabled. This functionality is currently disabled. The settings will not be applied.");
 define("LAN_TRUMBOWYG_ADMIN_02", "Default Semantics is not set off. These settings will not be applied.");
@@ -105,4 +109,10 @@ define("LAN_TRUMBOWYG_PLUGIN_PASTEIMAGE_HELP", "Paste image plugin allows direct
 define("LAN_TRUMBOWYG_PLUGIN_PREFORMATTED_HELP", "Preformatted plugin helps you insert preformatted text into the editor.");
 define("LAN_TRUMBOWYG_PLUGIN_RUBY_HELP", "Ruby plugin lets you add ruby annotations to your content.");
 define("LAN_TRUMBOWYG_PLUGIN_SPECIALCHARS_HELP", "Special characters plugin allows you to insert special characters into the editor.");
- 
+
+
+
+define("LAN_TRUMBOWYG_PLUGIN_ALLOWEDTAGS", "Plugin Allowed Tags");
+define("LAN_TRUMBOWYG_PLUGIN_ALLOWEDTAGS_HELP", "This plugin allows you to specify which HTML tags are permitted in the editor.");
+define("LAN_TRUMBOWYG_REMOVEFORMATPASTED", "Remove Format on Paste");
+define("LAN_TRUMBOWYG_REMOVEFORMATPASTED_HELP", "Automatically removes formatting when content is pasted into the editor.");

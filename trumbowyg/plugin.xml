@@ -24,11 +24,14 @@
         <pref name="urlProtocol">0</pref>
         <pref name="linkTargets">0</pref>
 		<pref name="minimalLinks'">0</pref>
+        <pref name="removeformatpasted">0</pref>
  		<pref name="tagsToRemove"></pref>
         <pref name="tagsToKeep">hr,img,embed,iframe,input</pref>
+        <pref name="allowtagsfrompaste">b,em,i,strong</pref>
         <pref name="tagClasses"></pref>
         <pref name="btns"></pref>
         <pref name="semantic"></pref>
+        <pref name="plugin_allowtagsfrompaste">0</pref>
         <pref name="plugin_base64">0</pref>
         <pref name="plugin_cleanpaste">0</pref>
         <pref name="plugin_emoji">0</pref>

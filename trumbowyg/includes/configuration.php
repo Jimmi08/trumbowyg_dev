@@ -237,12 +237,13 @@
 
 		public static function getSettings()
 		{
- 
+			$plugPrefs  = e107::pref('trumbowyg'); 
+
 			// Merge into defaults
 			$settings = self::$defaults;
 		 
 			//buttons
-			$b = (bool) e107::pref('trumbowyg', 'trumbowyg_btns');
+			$b = (bool) $plugPrefs['trumbowyg_btns'];
 			if($b) {  //override only in this case
 				$btns = self::buttonPane();
 				$settings['btns'] = $btns;	
@@ -270,18 +271,30 @@
 			$settings['changeActiveDropdownIcon']  =  (bool) e107::pref('trumbowyg', 'changeActiveDropdownIcon');
 			$settings['hideButtonTexts'] =	(bool) e107::pref('trumbowyg', 'hideButtonTexts');
 			$settings['resetcss'] =	(bool) e107::pref('trumbowyg', 'resetcss');
+			$settings['removeformatPasted'] = $plugPrefs['allowtagsfrompaste']; 
 			$settings['autogrow'] =	(bool) e107::pref('trumbowyg', 'autogrow');
 			$settings['imageWidthModalEdit'] =	(bool) e107::pref('trumbowyg', 'imageWidthModalEdit');
 			$settings['urlProtocol'] =	(bool) e107::pref('trumbowyg', 'urlProtocol');
 			$settings['minimalLinks'] =	(bool) e107::pref('trumbowyg', 'minimalLinks');
 
  
+
 			$settings['tagClasses'] = $tagClasses;
 			$tagsToRemove = e107::pref('trumbowyg', 'tagsToRemove');
 			$settings['tagsToRemove'] = explode(',', $tagsToRemove);
 
 			$tagsToKeep = e107::pref('trumbowyg', 'tagsToKeep');
 			$settings['tagsToKeep'] = explode(',', $tagsToKeep);
+ 
+			$a = (bool) e107::pref('trumbowyg', 'plugin_allowtagsfrompaste');
+			if ($a)
+			{
+				$allowedtags =  $plugPrefs['allowtagsfrompaste']; 
+				$settings['plugins']['allowTagsFromPaste']['allowedTags'] = explode(',', $allowedtags);
+				unset($settings['tagsToKeep']);
+				unset($settings['tagsToRemove']);
+	
+			}
 
 			return $settings;
 		}
