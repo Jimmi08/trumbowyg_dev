@@ -260,7 +260,7 @@
 			}
 
 
-			$t = (bool) e107::pref('trumbowyg', 'linkTargets');
+			$t = (bool) $plugPrefs['linkTargets'];
 			if ($t)
 			{  //override only in this case
 				$settings['linkTargets'] = ['_blank', '_self'];
@@ -268,25 +268,25 @@
 
 			$tagClasses = self::tagClasses();
 
-			$settings['changeActiveDropdownIcon']  =  (bool) e107::pref('trumbowyg', 'changeActiveDropdownIcon');
-			$settings['hideButtonTexts'] =	(bool) e107::pref('trumbowyg', 'hideButtonTexts');
-			$settings['resetcss'] =	(bool) e107::pref('trumbowyg', 'resetcss');
+			$settings['changeActiveDropdownIcon']  =  (bool) $plugPrefs['changeActiveDropdownIcon'];
+			$settings['hideButtonTexts'] =	(bool) $plugPrefs['hideButtonTexts'];
+			$settings['resetcss'] =	(bool) $plugPrefs['resetcss'];
 			$settings['removeformatPasted'] = $plugPrefs['allowtagsfrompaste']; 
-			$settings['autogrow'] =	(bool) e107::pref('trumbowyg', 'autogrow');
-			$settings['imageWidthModalEdit'] =	(bool) e107::pref('trumbowyg', 'imageWidthModalEdit');
-			$settings['urlProtocol'] =	(bool) e107::pref('trumbowyg', 'urlProtocol');
-			$settings['minimalLinks'] =	(bool) e107::pref('trumbowyg', 'minimalLinks');
+			$settings['autogrow'] =	(bool) $plugPrefs['autogrow'];
+			$settings['imageWidthModalEdit'] =	(bool) $plugPrefs['imageWidthModalEdit'];
+			$settings['urlProtocol'] =	(bool) $plugPrefs['urlProtocol']; 
+			$settings['minimalLinks'] =	(bool) $plugPrefs['minimalLinks'];
 
  
 
 			$settings['tagClasses'] = $tagClasses;
-			$tagsToRemove = e107::pref('trumbowyg', 'tagsToRemove');
+			$tagsToRemove = $plugPrefs['tagsToRemove']; 
 			$settings['tagsToRemove'] = explode(',', $tagsToRemove);
 
-			$tagsToKeep = e107::pref('trumbowyg', 'tagsToKeep');
+			$tagsToKeep = $plugPrefs['tagsToKeep']; 
 			$settings['tagsToKeep'] = explode(',', $tagsToKeep);
  
-			$a = (bool) e107::pref('trumbowyg', 'plugin_allowtagsfrompaste');
+			$a = (bool) $plugPrefs['plugin_allowtagsfrompaste']; 
 			if ($a)
 			{
 				$allowedtags =  $plugPrefs['allowtagsfrompaste']; 
@@ -296,6 +296,34 @@
 	
 			}
 
+			$c = (bool) $plugPrefs['plugin_colors'];
+			 
+			if ($c)
+			{
+				$at = e107::getTemplate('trumbowyg', 'colors');
+		 
+				if (!empty($at['colors']))
+				{
+					$settings['plugins']['colors'] = $at['colors'];
+					
+				}
+				if (!empty($at['colorLabels']))
+				{
+					$colorlabels = $at['colorLabels'];
+					$inlinecode = ' var colorLabels = ' .
+					json_encode($colorlabels, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '; ';
+
+					$inlinecode .= ' $.each(colorLabels, function(colorHexCode, colorLabel) {
+						$.trumbowyg.langs.en[colorHexCode] = colorLabel;
+					})';
+
+					e107::js('header-inline', $inlinecode, 'jquery', 1);
+				 
+				}
+	  
+			 
+			}
+ 
 			return $settings;
 		}
 	}

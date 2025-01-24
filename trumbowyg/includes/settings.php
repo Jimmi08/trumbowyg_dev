@@ -173,7 +173,7 @@ class trumbowyg_plugins_ui extends e_admin_ui
 	protected $pluginTitle = LAN_PLUGIN_TRUMBOWYG_NAME;
 	protected $pluginName = "trumbowyg";
 
-	protected $preftabs				= array(0 =>  'Simple', '1' => 'With options', '2' => 'With templates' , '3' => 'Not used');
+	protected $preftabs				= array(0 =>  'Buttons', '1' => 'Buttons with templates', '2' => 'With templates' , '3' => 'Not used');
 	/**
 	 * @var array
 	 */
@@ -195,12 +195,13 @@ class trumbowyg_plugins_ui extends e_admin_ui
 
 
 
- 
 
+		'plugin_colors'               => array('title' => LAN_TRUMBOWYG_PLUGIN_COLORS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_COLORS_HELP, 'tab' => 1),
+ 
 	 
 		'plugin_fontsize'             => array('title' => LAN_TRUMBOWYG_PLUGIN_FONTSIZE, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_FONTSIZE_HELP),
 		'plugin_fontfamily'           => array('title' => LAN_TRUMBOWYG_PLUGIN_FONTFAMILY, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_FONTFAMILY_HELP),
-		'plugin_colors'               => array('title' => LAN_TRUMBOWYG_PLUGIN_COLORS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_COLORS_HELP),
+		
 	);
 
 
@@ -212,11 +213,18 @@ class trumbowyg_plugins_ui extends e_admin_ui
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_BASE64 . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_BASE64_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_CLEANPASTE . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_CLEANPASTE_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_EMOJI . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_EMOJI_HELP . "<br><hr>";
+		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_HISTORY . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_HISTORY_HELP . "<br><hr>";
+		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_INDENT . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_INDENT_HELP . "<br><hr>";
+		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_INSERTAUDIO . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_INSERTAUDIO_HELP . "<br><hr>";
+		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_NOEMBED . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_NOEMBED_HELP . "<br><hr>";
+
+
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_FONTSIZE . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_FONTSIZE_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_FONTFAMILY . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_FONTFAMILY_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_COLORS . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_COLORS_HELP . "<br><hr>";
+		$text .= " <br>" . LAN_TRUMBOWYG_DISPLAY_AS_LIST_HELP . "<br> ";
+ 
 
-		
 		if($this->getMode() == 'plugins') {
 				$allowed =  e107::pref('trumbowyg', 'trumbowyg_btns');
 				if (!$allowed)

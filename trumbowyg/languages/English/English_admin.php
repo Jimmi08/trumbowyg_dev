@@ -79,7 +79,7 @@ define("LAN_TRUMBOWYG_PLUGIN_CLEANPASTE", "Clean paste");
 define("LAN_TRUMBOWYG_PLUGIN_EMOJI", "Emoji");
 define("LAN_TRUMBOWYG_PLUGIN_FONTSIZE", "Font size");
 define("LAN_TRUMBOWYG_PLUGIN_FONTFAMILY", "Font family");
-define("LAN_TRUMBOWYG_PLUGIN_COLORS", "Colors");
+
 
 define("LAN_TRUMBOWYG_PLUGIN_HISTORY", "History");
 define("LAN_TRUMBOWYG_PLUGIN_INDENT", "Indent");
@@ -98,7 +98,7 @@ define("LAN_TRUMBOWYG_PLUGIN_CLEANPASTE_HELP", "Clean paste plugin handles paste
 define("LAN_TRUMBOWYG_PLUGIN_EMOJI_HELP", "Emoji plugin allows you to insert emojis in your editor.");
 define("LAN_TRUMBOWYG_PLUGIN_FONTSIZE_HELP", "Font size plugin lets you change the font size in the editor.");
 define("LAN_TRUMBOWYG_PLUGIN_FONTFAMILY_HELP", "Font family plugin lets you change the font family in the editor.");
-define("LAN_TRUMBOWYG_PLUGIN_COLORS_HELP", "Colors plugin allows you to apply color to text in the editor.");
+
 
 define("LAN_TRUMBOWYG_PLUGIN_HISTORY_HELP", "History plugin enables undo and redo actions in the editor.");
 define("LAN_TRUMBOWYG_PLUGIN_INDENT_HELP", "Indent plugin allows you to indent or outdent content in the editor.");
@@ -116,3 +116,12 @@ define("LAN_TRUMBOWYG_PLUGIN_ALLOWEDTAGS", "Plugin Allowed Tags");
 define("LAN_TRUMBOWYG_PLUGIN_ALLOWEDTAGS_HELP", "This plugin allows you to specify which HTML tags are permitted in the editor.");
 define("LAN_TRUMBOWYG_REMOVEFORMATPASTED", "Remove Format on Paste");
 define("LAN_TRUMBOWYG_REMOVEFORMATPASTED_HELP", "Automatically removes formatting when content is pasted into the editor.");
+define("LAN_TRUMBOWYG_DISPLAY_AS_LIST", "Display as List");
+define("LAN_TRUMBOWYG_DISPLAY_AS_LIST_HELP", "Switch from square to labelled list view. Default view is the square's one. Enable this option to display content as a list instead of color pallete.");
+
+
+define("LAN_TRUMBOWYG_PLUGIN_COLORS", "Colors");
+define("LAN_TRUMBOWYG_PLUGIN_COLORS_HELP", "Colors plugin allows you to apply color to text in the editor. You can customize the color list used by both dropdowns. You can customize the color list used by each dropdown independently. The displayAsList option allows you to change the layout of the color dropdown from squares to list.");
+
+define("LAN_TRUMBOWYG_ALLOW_CUSTOM_BACKCOLOR", "Disable Custom Background Color");
+define("LAN_TRUMBOWYG_ALLOW_CUSTOM_BACKCOLOR_HELP", "Enable or disable the ability to select custom background colors in the editor.");

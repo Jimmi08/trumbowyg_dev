@@ -75,7 +75,7 @@ define("LAN_TRUMBOWYG_PLUGIN_CLEANPASTE", "Clean Paste");
 define("LAN_TRUMBOWYG_PLUGIN_EMOJI", "Emoji");
 define("LAN_TRUMBOWYG_PLUGIN_FONTSIZE", "Font grootte");
 define("LAN_TRUMBOWYG_PLUGIN_FONTFAMILY", "Font familie");
-define("LAN_TRUMBOWYG_PLUGIN_COLORS", "Kleuren");
+
 
 define("LAN_TRUMBOWYG_PLUGIN_HISTORY", "History");
 define("LAN_TRUMBOWYG_PLUGIN_INDENT", "Indent");
@@ -94,7 +94,7 @@ define("LAN_TRUMBOWYG_PLUGIN_CLEANPASTE_HELP", "De plug-in Clean Paste verwerkt 
 define("LAN_TRUMBOWYG_PLUGIN_EMOJI_HELP", "Met de Emoji-plugin kan je emoji's in je editor invoegen.");
 define("LAN_TRUMBOWYG_PLUGIN_FONTSIZE_HELP", "Met de plug-in voor lettergrootte kan je de lettergrootte in de editor wijzigen.");
 define("LAN_TRUMBOWYG_PLUGIN_FONTFAMILY_HELP", "Met de lettertypefamilie-plugin kan je het lettertype in de editor wijzigen.");
-define("LAN_TRUMBOWYG_PLUGIN_COLORS_HELP", "Met de kleur plug-in kan je kleur toepassen op tekst in de editor.");
+
 
 define("LAN_TRUMBOWYG_PLUGIN_HISTORY_HELP", "History plugin enables undo and redo actions in the editor.");
 define("LAN_TRUMBOWYG_PLUGIN_INDENT_HELP", "Indent plugin allows you to indent or outdent content in the editor.");
@@ -111,3 +111,11 @@ define("LAN_TRUMBOWYG_PLUGIN_ALLOWEDTAGS", "Allowed Tags");
 define("LAN_TRUMBOWYG_PLUGIN_ALLOWEDTAGS_HELP", "This plugin allows you to specify which HTML tags are permitted in the editor.");
 define("LAN_TRUMBOWYG_REMOVEFORMATPASTED", "Remove Format on Paste");
 define("LAN_TRUMBOWYG_REMOVEFORMATPASTED_HELP", "Automatically removes formatting when content is pasted into the editor.");
+define("LAN_TRUMBOWYG_DISPLAY_AS_LIST", "Display Colors as List");
+define("LAN_TRUMBOWYG_DISPLAY_AS_LIST_HELP", "Enable this option to display content as a list instead of color pallete.");
+
+define("LAN_TRUMBOWYG_PLUGIN_COLORS", "Kleuren");
+define("LAN_TRUMBOWYG_PLUGIN_COLORS_HELP", "Met de kleur plug-in kan je kleur toepassen op tekst in de editor.");
+
+define("LAN_TRUMBOWYG_ALLOW_CUSTOM_BACKCOLOR", "Allow Custom Background Color");
+define("LAN_TRUMBOWYG_ALLOW_CUSTOM_BACKCOLOR_HELP", "Enable or disable the ability to select custom background colors in the editor.");

@@ -34,6 +34,7 @@
         <pref name="plugin_allowtagsfrompaste">0</pref>
         <pref name="plugin_base64">0</pref>
         <pref name="plugin_cleanpaste">0</pref>
+        <pref name="plugin_colors">0</pref>
         <pref name="plugin_emoji">0</pref>
         <pref name="plugin_history">0</pref>
         <pref name="plugin_indent">0</pref>
@@ -51,6 +52,8 @@
         <pref name="plugin_preformatted">0</pref>
         <pref name="plugin_table">0</pref>
         <pref name="plugin_template">0</pref>
+  
+ 
 	</pluginPrefs>
  
 </e107Plugin>
