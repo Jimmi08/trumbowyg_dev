@@ -29,16 +29,25 @@
         <pref name="tagClasses"></pref>
         <pref name="btns"></pref>
         <pref name="semantic"></pref>
-        <pref name="plugin_base64">1</pref>
-        <pref name="plugin_cleanpaste"></pref>
-        <pref name="plugin_emoji"></pref>
-        <pref name="plugin_fontsize"></pref>
-        <pref name="plugin_fontfamily"></pref>
-        <pref name="plugin_colors"></pref>
-        <pref name="plugin_lineheight"></pref>
-        <pref name="plugin_preformatted"></pref>
-        <pref name="plugin_table"></pref>
-        <pref name="plugin_template"></pref>      
+        <pref name="plugin_base64">0</pref>
+        <pref name="plugin_cleanpaste">0</pref>
+        <pref name="plugin_emoji">0</pref>
+        <pref name="plugin_history">0</pref>
+        <pref name="plugin_indent">0</pref>
+        <pref name="plugin_insertaudio">0</pref>
+        <pref name="plugin_noembed">0</pref>
+        <pref name="plugin_pasteembed">0</pref>
+        <pref name="plugin_pasteimage">0</pref>
+        <pref name="plugin_preformatted">0</pref>
+        <pref name="plugin_ruby">0</pref>
+        <pref name="plugin_specialchars">0</pref>
+        <pref name="plugin_fontsize">0</pref>
+        <pref name="plugin_fontfamily">0</pref>
+        <pref name="plugin_colors">0</pref>
+        <pref name="plugin_lineheight">0</pref>
+        <pref name="plugin_preformatted">0</pref>
+        <pref name="plugin_table">0</pref>
+        <pref name="plugin_template">0</pref>
 	</pluginPrefs>
  
 </e107Plugin>

@@ -240,10 +240,9 @@
  
 			// Merge into defaults
 			$settings = self::$defaults;
-			 
+		 
 			//buttons
 			$b = (bool) e107::pref('trumbowyg', 'trumbowyg_btns');
-			
 			if($b) {  //override only in this case
 				$btns = self::buttonPane();
 				$settings['btns'] = $btns;	

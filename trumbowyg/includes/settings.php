@@ -179,9 +179,22 @@ class trumbowyg_plugins_ui extends e_admin_ui
 	 */
 
 	protected $prefs = array(
-		'plugin_base64'               => array('title' => LAN_TRUMBOWYG_PLUGIN_BASE64, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_BASE64_HELP),
-		'plugin_cleanpaste'           => array('title' => LAN_TRUMBOWYG_PLUGIN_CLEANPASTE, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_CLEANPASTE_HELP),
-		'plugin_emoji'                => array('title' => LAN_TRUMBOWYG_PLUGIN_EMOJI, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_EMOJI_HELP),
+
+		'plugin_base64'        => array('title' => LAN_TRUMBOWYG_PLUGIN_BASE64, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_BASE64_HELP),
+		'plugin_cleanpaste'    => array('title' => LAN_TRUMBOWYG_PLUGIN_CLEANPASTE, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_CLEANPASTE_HELP),
+		'plugin_emoji'         => array('title' => LAN_TRUMBOWYG_PLUGIN_EMOJI, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_EMOJI_HELP),
+		'plugin_history'       => array('title' => LAN_TRUMBOWYG_PLUGIN_HISTORY, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_HISTORY_HELP),
+		'plugin_indent'        => array('title' => LAN_TRUMBOWYG_PLUGIN_INDENT, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_INDENT_HELP),
+		'plugin_insertaudio'   => array('title' => LAN_TRUMBOWYG_PLUGIN_INSERTAUDIO, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_INSERTAUDIO_HELP),
+		'plugin_noembed'       => array('title' => LAN_TRUMBOWYG_PLUGIN_NOEMBED, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_NOEMBED_HELP),
+		'plugin_pasteembed'    => array('title' => LAN_TRUMBOWYG_PLUGIN_PASTEEMBED, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_PASTEEMBED_HELP),
+		'plugin_pasteimage'    => array('title' => LAN_TRUMBOWYG_PLUGIN_PASTEIMAGE, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_PASTEIMAGE_HELP),
+		'plugin_preformatted'  => array('title' => LAN_TRUMBOWYG_PLUGIN_PREFORMATTED, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_PREFORMATTED_HELP),
+		'plugin_ruby'          => array('title' => LAN_TRUMBOWYG_PLUGIN_RUBY, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_RUBY_HELP),
+		'plugin_specialchars'  => array('title' => LAN_TRUMBOWYG_PLUGIN_SPECIALCHARS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_SPECIALCHARS_HELP),
+
+ 
+	 
 		'plugin_fontsize'             => array('title' => LAN_TRUMBOWYG_PLUGIN_FONTSIZE, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_FONTSIZE_HELP),
 		'plugin_fontfamily'           => array('title' => LAN_TRUMBOWYG_PLUGIN_FONTFAMILY, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_FONTFAMILY_HELP),
 		'plugin_colors'               => array('title' => LAN_TRUMBOWYG_PLUGIN_COLORS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_PLUGIN_COLORS_HELP),
@@ -200,6 +213,14 @@ class trumbowyg_plugins_ui extends e_admin_ui
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_FONTFAMILY . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_FONTFAMILY_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_PLUGIN_COLORS . "</b><br>" . LAN_TRUMBOWYG_PLUGIN_COLORS_HELP . "<br><hr>";
 
+		if($this->getMode() == 'plugins') {
+				$allowed =  e107::pref('trumbowyg', 'trumbowyg_btns');
+				if (!$allowed)
+				{
+					$text  .= e107::getMessage()->addWarning(LAN_TRUMBOWYG_ADMIN_05)->render();
+				}
+		}
+
 		return array('caption' => $caption, 'text' => $text);
 	}
 
@@ -208,10 +229,14 @@ class trumbowyg_plugins_ui extends e_admin_ui
 	function init()
 	{
 
-		//Note for Alex: I use this way to see at first look what is set differently than default plugin generated code 
+ 
 
+		//Note for Alex: I use this way to see at first look what is set differently than default plugin generated code 
 		$this->prefs['trumbowyg_semantic']['writeParms']['inverse'] = 1;
 	}
+
+
+
 }
 
 
@@ -242,6 +267,10 @@ class trumbowyg_btns_ui extends trumbowyg_admin_ui
 		$caption = LAN_HELP;
 		$text = '';
 		$text .= "<b>" . LAN_TRUMBOWYG_BTNS . "</b><br>" . LAN_TRUMBOWYG_BTNS_HELP;
+
+		$mes = e107::getMessage();
+
+
 
 		return array('caption' => $caption, 'text' => $text);
 	}
@@ -410,7 +439,6 @@ class trumbowyg_admin_form_ui extends e_admin_form_ui
 		$text =  "";
 
 		$available  =  e107::pref('trumbowyg', 'trumbowyg_semantic');  //reverse
-
 		if ($available)
 		{
 			$text = e107::getMessage()->addWarning(LAN_TRUMBOWYG_ADMIN_02)->render();
@@ -501,20 +529,27 @@ class trumbowyg_btns_form_ui extends e_admin_form_ui
 			}
 		}
 
-		if ($pluginPrefs['plugin_base64'])
+		foreach ($buttons as $key => $label)
 		{
-			$disabled['base64'] = 0;
+			if ($disabled[$key]) $buttons[$key] = "<em>" . $label .  "</em> [*]";
 		}
 
-		if ($pluginPrefs['plugin_emoji'])
-		{
-			$disabled['emoji'] = 0;
-		}
+		if ($pluginPrefs['plugin_base64']) $disabled['base64'] = 0;
+		if ($pluginPrefs['plugin_emoji']) $disabled['emoji'] = 0;
+	//	if ($pluginPrefs['plugin_cleanpaste']) $disabled['cleanpaste'] = 0;
+		if ($pluginPrefs['plugin_history']) $disabled['historyUndo'] = 0;
+		if ($pluginPrefs['plugin_history']) $disabled['historyRedo'] = 0;
+		if ($pluginPrefs['plugin_indent']) $disabled['indent'] = 0;
+		if ($pluginPrefs['plugin_indent']) $disabled['outdent'] = 0;
+		if ($pluginPrefs['plugin_insertaudio']) $disabled['insertAudio'] = 0;
+		if ($pluginPrefs['plugin_noembed']) $disabled['noembed'] = 0;
+	//	if ($pluginPrefs['plugin_pasteembed']) $disabled['pasteembed'] = 0;
+	//	if ($pluginPrefs['plugin_pasteimage']) $disabled['pasteimage'] = 0;
+		if ($pluginPrefs['plugin_preformatted']) $disabled['preformatted'] = 0;
+		if ($pluginPrefs['plugin_ruby']) $disabled['ruby'] = 0;
+		if ($pluginPrefs['plugin_specialchars']) $disabled['specialChars'] = 0;
 
-		if ($pluginPrefs['plugin_cleanpaste'])
-		{
-			$disabled['cleanpaste'] = 0;
-		}
+
 
 		if ($pluginPrefs['plugin_fontsize'])
 		{

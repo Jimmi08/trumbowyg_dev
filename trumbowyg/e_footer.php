@@ -15,32 +15,36 @@ if (!defined('e107_INIT'))
 
 $pref = e107::getPref();
 
-e107::css('trumbowyg',  'vendor/ui/trumbowyg.min.css');
 
-if ((e107::wysiwyg(null, true) === 'trumbowyg' && check_class($pref['post_html'])))
-{
+$plugPrefs = e107::getPlugConfig('trumbowyg')->getPref();
+
+$enableOn =  (int) varset($plugPrefs['enableEditor'], 1);
+
+ 
+if($enableOn) {
+
 
 	if ((e107::wysiwyg(null, true) === 'trumbowyg' && check_class($pref['post_html'])) || strpos(e_SELF, "trumbowyg/admin_config.php"))
 	{
 
+		e107::css('trumbowyg',  'vendor/ui/trumbowyg.min.css');
 		e107::js('footer', e_PLUGIN . 'trumbowyg/vendor/trumbowyg.min.js', 'jquery', 1);
 
 		$pluginPrefs = e107::pref('trumbowyg');
 
-		if ($pluginPrefs['plugin_base64'])
-		{
-			e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/base64/trumbowyg.base64.min.js", 'jquery', 1);
-		}
+		if ($pluginPrefs['plugin_base64']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/base64/trumbowyg.base64.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_emoji']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/emoji/trumbowyg.emoji.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_cleanpaste']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/cleanpaste/trumbowyg.cleanpaste.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_history']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/history/trumbowyg.history.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_indent']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/indent/trumbowyg.indent.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_insertaudio']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/insertaudio/trumbowyg.insertaudio.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_noembed']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/noembed/trumbowyg.noembed.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_pasteembed']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/pasteembed/trumbowyg.pasteembed.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_pasteimage']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/pasteimage/trumbowyg.pasteimage.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_preformatted']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/preformatted/trumbowyg.preformatted.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_ruby']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/ruby/trumbowyg.ruby.min.js", 'jquery', 1);
+		if ($pluginPrefs['plugin_specialchars']) e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/specialchars/trumbowyg.specialchars.min.js", 'jquery', 1);
 
-		if ($pluginPrefs['plugin_emoji'])
-		{
-			e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/emoji/trumbowyg.emoji.min.js", 'jquery', 1);
-		}
-
-		if ($pluginPrefs['plugin_cleanpaste'])
-		{
-			e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/cleanpaste/trumbowyg.cleanpaste.min.js", 'jquery', 1);
-		}
 
 		if ($pluginPrefs['plugin_fontsize'])
 		{
@@ -67,3 +71,4 @@ if ((e107::wysiwyg(null, true) === 'trumbowyg' && check_class($pref['post_html']
 				", 'jquery', 1);
 	}
 }
+ 

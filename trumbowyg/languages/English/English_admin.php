@@ -54,6 +54,9 @@ define("LAN_TRUMBOWYG_ADMIN_02", "Default Semantics is not set off. These settin
 define("LAN_TRUMBOWYG_ADMIN_03", "Custom Button Pane is currently disabled. These settings will not be applied.");
 define("LAN_TRUMBOWYG_ADMIN_04", "Enable TrumboWyg Editor");
 define("LAN_TRUMBOWYG_ADMIN_04_HELP", "Disable editor if you are using/testing core tinymce editor.");
+define("LAN_TRUMBOWYG_ADMIN_05", "Custom buttons are disabled. Your settings will not be applied.");
+
+
 
 define("LAN_TRUMBOWYG_ADMIN_OPT_01", "Enabled");
 define("LAN_TRUMBOWYG_ADMIN_OPT_02", "Disabled");
@@ -74,6 +77,17 @@ define("LAN_TRUMBOWYG_PLUGIN_FONTSIZE", "Font size");
 define("LAN_TRUMBOWYG_PLUGIN_FONTFAMILY", "Font family");
 define("LAN_TRUMBOWYG_PLUGIN_COLORS", "Colors");
 
+define("LAN_TRUMBOWYG_PLUGIN_HISTORY", "History");
+define("LAN_TRUMBOWYG_PLUGIN_INDENT", "Indent");
+define("LAN_TRUMBOWYG_PLUGIN_INSERTAUDIO", "Insert audio");
+define("LAN_TRUMBOWYG_PLUGIN_NOEMBED", "No embed");
+define("LAN_TRUMBOWYG_PLUGIN_PASTEEMBED", "Paste embed");
+define("LAN_TRUMBOWYG_PLUGIN_PASTEIMAGE", "Paste image");
+define("LAN_TRUMBOWYG_PLUGIN_PREFORMATTED", "Preformatted");
+define("LAN_TRUMBOWYG_PLUGIN_RUBY", "Ruby");
+define("LAN_TRUMBOWYG_PLUGIN_SPECIALCHARS", "Special characters");
+
+
 // Help Constants
 define("LAN_TRUMBOWYG_PLUGIN_BASE64_HELP", "Base64 plugin allows you to insert images inline as base64.");
 define("LAN_TRUMBOWYG_PLUGIN_CLEANPASTE_HELP", "Clean paste plugin handles paste events, cleaning the HTML code before inserting content into the editor.");
@@ -82,4 +96,13 @@ define("LAN_TRUMBOWYG_PLUGIN_FONTSIZE_HELP", "Font size plugin lets you change t
 define("LAN_TRUMBOWYG_PLUGIN_FONTFAMILY_HELP", "Font family plugin lets you change the font family in the editor.");
 define("LAN_TRUMBOWYG_PLUGIN_COLORS_HELP", "Colors plugin allows you to apply color to text in the editor.");
 
+define("LAN_TRUMBOWYG_PLUGIN_HISTORY_HELP", "History plugin enables undo and redo actions in the editor.");
+define("LAN_TRUMBOWYG_PLUGIN_INDENT_HELP", "Indent plugin allows you to indent or outdent content in the editor.");
+define("LAN_TRUMBOWYG_PLUGIN_INSERTAUDIO_HELP", "Insert audio plugin lets you embed audio files into the editor.");
+define("LAN_TRUMBOWYG_PLUGIN_NOEMBED_HELP", "No embed plugin ensures content is inserted without embedded objects.");
+define("LAN_TRUMBOWYG_PLUGIN_PASTEEMBED_HELP", "Paste embed plugin handles pasting embedded media into the editor.");
+define("LAN_TRUMBOWYG_PLUGIN_PASTEIMAGE_HELP", "Paste image plugin allows direct pasting of images into the editor.");
+define("LAN_TRUMBOWYG_PLUGIN_PREFORMATTED_HELP", "Preformatted plugin helps you insert preformatted text into the editor.");
+define("LAN_TRUMBOWYG_PLUGIN_RUBY_HELP", "Ruby plugin lets you add ruby annotations to your content.");
+define("LAN_TRUMBOWYG_PLUGIN_SPECIALCHARS_HELP", "Special characters plugin allows you to insert special characters into the editor.");
  
