@@ -94,7 +94,7 @@ if($enableOn) {
 		e107::js('footer-inline', "
 				$('.e-wysiwyg').trumbowyg($jsonSettings);
 				", 'jquery', 1);
-		print_a($jsonSettings);		
+		 	
 	}
 }
  
