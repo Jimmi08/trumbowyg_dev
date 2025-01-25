@@ -20,13 +20,38 @@ $pluginPrefs = e107::pref('trumbowyg');
 
 $enableOn =  (int) varset($pluginPrefs['enableEditor'], 1);
 
-e107::css('trumbowyg',  'dist/ui/trumbowyg.min.css');
+$code = '
+:root {
+    --tbw-cell-vertical-padding: 4px;
+    --tbw-cell-horizontal-padding: 8px;
+    --tbw-cell-line-height: 1.5em;
+}
+
+.trumbowyg-editor table {
+    margin-bottom: var(--tbw-cell-line-height);
+}
+
+.trumbowyg-editor th,
+.trumbowyg-editor td {
+    height: calc(var(--tbw-cell-vertical-padding) * 2 + var(--tbw-cell-line-height));
+    min-width: calc(var(--tbw-cell-horizontal-padding) * 2);
+    padding: var(--tbw-cell-vertical-padding) var(--tbw-cell-horizontal-padding);
+    border: 1px solid #e7eaec;
+}
+';
+
+e107::css('inline', $code);
+
 if($enableOn) {
 
 
 	if ((e107::wysiwyg(null, true) === 'trumbowyg' && check_class($pref['post_html'])) || strpos(e_SELF, "trumbowyg/admin_config.php"))
 	{
-		
+
+
+		e107::css('trumbowyg',  'dist/ui/trumbowyg.min.css');
+	
+
 		e107::js('footer', e_PLUGIN . 'trumbowyg/dist/trumbowyg.min.js', 'jquery', 1);
 
 		$cssPlugins = ['colors', 'table'];
