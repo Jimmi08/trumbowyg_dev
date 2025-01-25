@@ -296,6 +296,22 @@
 	
 			}
 
+			$fs = (bool) $plugPrefs['plugin_fontsize'];
+			$ff = (bool) $plugPrefs['plugin_fontfamily'];
+			if ($fs OR $ff)
+			{
+				$ft = e107::getTemplate('trumbowyg', 'fonts', NULL, 'front', false);
+			}
+
+			if (!empty($ft['fontfamily']))
+			{
+				$settings['plugins']['fontfamily'] = $ft['fontfamily'];
+			}
+			if (!empty($ft['fontsize']))
+			{
+				$settings['plugins']['fontsize'] = $ft['fontsize'];
+			}
+ 
 			$c = (bool) $plugPrefs['plugin_colors'];
 			 
 			if ($c)
