@@ -123,8 +123,8 @@ define("LAN_TRUMBOWYG_PLUGIN_SPECIALCHARS_HELP", "Special characters plugin allo
 define("LAN_TRUMBOWYG_PLUGIN_TABLE", "Table");
 define("LAN_TRUMBOWYG_PLUGIN_TABLE_HELP", "Table plugin allows you to create and manage tables in the editor.");
 
-define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE", "");
-define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE_HELP", "");
+define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE", "Template");
+define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE_HELP", "This plugin allows you to add a template-dropdown.");
 
 define("LAN_TRUMBOWYG_PLUGIN_UPLOAD", "");
 define("LAN_TRUMBOWYG_PLUGIN_UPLOAD_HELP", "");

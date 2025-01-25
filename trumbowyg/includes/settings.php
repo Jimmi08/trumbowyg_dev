@@ -571,7 +571,7 @@ class trumbowyg_btns_form_ui extends e_admin_form_ui
 			$disabled['foreColor'] = 0;
 			$disabled['backColor'] = 0;
 		}
-
+		if ($pluginPrefs['plugin_template']) $disabled['template'] = 0;
 
 		foreach ($buttons as $key => $label)
 		{

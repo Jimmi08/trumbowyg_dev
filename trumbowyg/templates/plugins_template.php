@@ -6,6 +6,7 @@ $PLUGINS_TEMPLATE['colors'] = array();
 $PLUGINS_TEMPLATE['colorLabels'] = array();
 $PLUGINS_TEMPLATE['fontfamily'] = array();
 $PLUGINS_TEMPLATE['fontsize'] = array();
+$PLUGINS_TEMPLATE['template'] = array();
 
 //Examples for using in theme
 // $PLUGINS_TEMPLATE['colors']['colorList'] = ['000', '111', '222', 'ffea00'];
@@ -21,7 +22,7 @@ $PLUGINS_TEMPLATE['fontsize'] = array();
 // $PLUGINS_TEMPLATE['colorLabels']['#00ff00'] = 'Green';
 // $PLUGINS_TEMPLATE['colorLabels']['#0000ff'] = 'Blue';
 // $PLUGINS_TEMPLATE['colorLabels']['#ff1493'] = 'Pink';
- 
+
 
 // $PLUGINS_TEMPLATE['fontfamily']['fontList']
 // = [
@@ -31,3 +32,9 @@ $PLUGINS_TEMPLATE['fontsize'] = array();
 
 // $PLUGINS_TEMPLATE['fontsize']['sizeList'] = ['12px','14px','16px'];
 // $PLUGINS_TEMPLATE['fontsize']['allowCustomSize'] = 0;
+
+
+$PLUGINS_TEMPLATE['template'] = [
+		['name' => 'Template 1', 'html' => '<p>I am a template!</p>'],
+		['name' => 'Template 2', 'html' => '<p>I am a template!</p>']
+];
