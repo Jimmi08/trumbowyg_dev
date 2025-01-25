@@ -13,6 +13,27 @@ if (!e107::isInstalled('trumbowyg') || !getperms("P"))
 e107::lan('trumbowyg', true, true);
 
 
+$code = ':root {
+    --tbw-cell-vertical-padding: 4px;
+    --tbw-cell-horizontal-padding: 8px;
+    --tbw-cell-line-height: 1.5em;
+}
+
+table {
+    margin-bottom: var(--tbw-cell-line-height);
+}
+
+th,
+td {
+    height: calc(var(--tbw-cell-vertical-padding) * 2 + var(--tbw-cell-line-height));
+    min-width: calc(var(--tbw-cell-horizontal-padding) * 2);
+    padding: var(--tbw-cell-vertical-padding) var(--tbw-cell-horizontal-padding);
+    border: 1px solid #e7eaec;
+}
+       ';
+
+e107::css('header', $code);
+
 /**
  * Class trumbowyg_admin_config.
  */
@@ -185,8 +206,7 @@ class trumbowyg_plugins_ui extends e_admin_ui
 		$caption = LAN_HELP;
 		$plugins = plugin_trumbowyg_configuration::getAvailablePlugins();
 
-		// Initialize an empty string for help text
-		$text = '';
+ 
 
 		// Loop through each plugin directory and generate help text dynamically
 		foreach ($plugins as $plugin)

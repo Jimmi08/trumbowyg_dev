@@ -20,13 +20,13 @@ $pluginPrefs = e107::pref('trumbowyg');
 
 $enableOn =  (int) varset($pluginPrefs['enableEditor'], 1);
 
- 
+e107::css('trumbowyg',  'dist/ui/trumbowyg.min.css');
 if($enableOn) {
 
 
 	if ((e107::wysiwyg(null, true) === 'trumbowyg' && check_class($pref['post_html'])) || strpos(e_SELF, "trumbowyg/admin_config.php"))
 	{
-		e107::css('trumbowyg',  'dist/ui/trumbowyg.min.css');
+		
 		e107::js('footer', e_PLUGIN . 'trumbowyg/dist/trumbowyg.min.js', 'jquery', 1);
 
 		$cssPlugins = ['colors', 'table'];
@@ -70,6 +70,7 @@ if($enableOn) {
 		}
 
 		$trumbowygSettings = plugin_trumbowyg_configuration::getSettings();
+	 
 		// Convert to JSON for JavaScript
 		$jsonSettings = json_encode($trumbowygSettings, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
  

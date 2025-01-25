@@ -69,7 +69,7 @@
 			['unorderedList', 'orderedList'],
 			['horizontalRule'],
 			['upload', 'base64', 'noembed'],
-			['table', 'tableCellBackgroundColor', 'tableBorderColor'],
+			['table'], ['tableCellBackgroundColor', 'tableBorderColor'],
 			['preformatted'],
 			['template'],
 			['removeformat'],
@@ -318,6 +318,7 @@
 				$prefKey = "plugin_{$plugin}"; // Generate the preference key
 				if (!empty($pluginPrefs[$prefKey]))
 				{
+
 					if (!empty($config[$plugin]))
 					{
 						$settings['plugins'][$plugin] = $config[$plugin];
@@ -325,8 +326,7 @@
  
 				}
 			}
-
-print_a($settings);
+ 
 			$a = (bool) $pluginPrefs['plugin_allowtagsfrompaste'];
 			if ($a)
 			{
