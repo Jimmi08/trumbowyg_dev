@@ -1,7 +1,12 @@
 <?php
 
-
- /*
+//mandatory for override, don't delete them, merge is not allowed 
+$COLORS_TEMPLATE['colors'] = array();
+$COLORS_TEMPLATE['colorLabels'] = array();
+ 
+ 
+ 
+/* example for theme template
 $COLORS_TEMPLATE['colors']['colorList'] = ['000', '111', '222', 'ffea00'];
 $COLORS_TEMPLATE['colors']['foreColorList'] = ['ff0000', '00ff00', '0000ff'];
 $COLORS_TEMPLATE['colors']['backColorList'] = ['000', '333', '555'];
@@ -16,5 +21,3 @@ $COLORS_TEMPLATE['colorLabels']['#00ff00'] = 'Green';
 $COLORS_TEMPLATE['colorLabels']['#0000ff'] = 'Blue';
 $COLORS_TEMPLATE['colorLabels']['#ff1493'] = 'Pink';
  */
-
- 

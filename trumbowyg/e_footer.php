@@ -34,7 +34,7 @@ if($enableOn) {
 		}
 
  
-		e107::js('footer', e_PLUGIN . 'trumbowyg/dist/trumbowyg.min.js', 'jquery', 1);
+		e107::js('footer', e_PLUGIN . 'trumbowyg/vendor/trumbowyg.min.js', 'jquery', 1);
 
 		
 
@@ -67,7 +67,8 @@ if($enableOn) {
 		{
 			e107::js('footer', e_PLUGIN . "trumbowyg/vendor/plugins/colors/trumbowyg.colors.min.js", 'jquery', 1);
 
-			$at = e107::getTemplate('trumbowyg', 'colors');
+ 
+			$at = e107::getTemplate('trumbowyg', 'colors', NULL, 'front', false);
 			if ($at['colorLabels'])
 			{
 				$colorlabels = $at['colorLabels'];

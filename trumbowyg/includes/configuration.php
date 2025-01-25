@@ -300,7 +300,7 @@
 			 
 			if ($c)
 			{
-				$at = e107::getTemplate('trumbowyg', 'colors');
+				$at = e107::getTemplate('trumbowyg', 'colors', NULL, 'front', false);
 		 
 				if (!empty($at['colors']))
 				{
