@@ -119,3 +119,30 @@ define("LAN_TRUMBOWYG_PLUGIN_COLORS_HELP", "Met de kleur plug-in kan je kleur to
 
 define("LAN_TRUMBOWYG_ALLOW_CUSTOM_BACKCOLOR", "Allow Custom Background Color");
 define("LAN_TRUMBOWYG_ALLOW_CUSTOM_BACKCOLOR_HELP", "Enable or disable the ability to select custom background colors in the editor.");
+
+define("LAN_TRUMBOWYG_PLUGIN_TABLE", "Table");
+define("LAN_TRUMBOWYG_PLUGIN_TABLE_HELP", "Table plugin allows you to create and manage tables in the editor.");
+
+define("LAN_TRUMBOWYG_PLUGIN_GIPHY", "");
+define("LAN_TRUMBOWYG_PLUGIN_GIPHY_HELP", "");
+
+define("LAN_TRUMBOWYG_PLUGIN_HIGHLIGHT", "");
+define("LAN_TRUMBOWYG_PLUGIN_HIGHLIGHT_HELP", "");
+
+define("LAN_TRUMBOWYG_PLUGIN_LINEHEIGHT", "");
+define("LAN_TRUMBOWYG_PLUGIN_LINEHEIGHT_HELP", "");
+
+define("LAN_TRUMBOWYG_PLUGIN_MATHML", "");
+define("LAN_TRUMBOWYG_PLUGIN_MATHML_HELP", "");
+
+define("LAN_TRUMBOWYG_PLUGIN_MENTION", "");
+define("LAN_TRUMBOWYG_PLUGIN_MENTION_HELP", "");
+
+define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG", "");
+define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG_HELP", "");
+
+define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE", "");
+define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE_HELP", "");
+
+define("LAN_TRUMBOWYG_PLUGIN_UPLOAD", "");
+define("LAN_TRUMBOWYG_PLUGIN_UPLOAD_HELP", "");

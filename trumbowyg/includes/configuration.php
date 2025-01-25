@@ -1,6 +1,6 @@
  <?php
 
-// inlineElementsSelector: 'a,abbr,acronym,b,caption,cite,code,col,dfn,dir,dt,dd,em,font,hr,i,kbd,li,q,span,strikeout,strong,sub,sup,u',
+	// inlineElementsSelector: 'a,abbr,acronym,b,caption,cite,code,col,dfn,dir,dt,dd,em,font,hr,i,kbd,li,q,span,strikeout,strong,sub,sup,u',
 
 
 	/**
@@ -77,48 +77,50 @@
 		];
 
 		private static 	$tagClasses = array(
-				"h1" => "",
-				"h2" => "",
-				"h3" => "",
-				"h4" => "",
-				"h5" => "",
-				"h6" => "",
-				"p" => "",
-				"b" => "",
-				"strong" => "",
-				"i" => "",
-				"em" => "",
-				"u" => "",
-				"s" => "",
-				"ul" => "",
-				"ol" => "",
-				"li" => "",
-				"blockquote" => "",
-				"pre" => "",
-				"code" => "",
-				"table" => "",
-				"thead" => "",
-				"tbody" => "",
-				"tr" => "",
-				"th" => "",
-				"td" => "",
-				"img" => "",
-				"figure" => "",
-				"figcaption" => "",
-				"a" => "",
-				"div" => "",
-				"span" => "",
-				"br" => "",
-				"hr" => ""
-			);
+			"h1" => "",
+			"h2" => "",
+			"h3" => "",
+			"h4" => "",
+			"h5" => "",
+			"h6" => "",
+			"p" => "",
+			"b" => "",
+			"strong" => "",
+			"i" => "",
+			"em" => "",
+			"u" => "",
+			"s" => "",
+			"ul" => "",
+			"ol" => "",
+			"li" => "",
+			"blockquote" => "",
+			"pre" => "",
+			"code" => "",
+			"table" => "",
+			"thead" => "",
+			"tbody" => "",
+			"tr" => "",
+			"th" => "",
+			"td" => "",
+			"img" => "",
+			"figure" => "",
+			"figcaption" => "",
+			"a" => "",
+			"div" => "",
+			"span" => "",
+			"br" => "",
+			"hr" => ""
+		);
 
 		private static $defaultButtonsKeys = [];
 		private static $fullButtonsKeys = [];
 
+		private static $availablePlugins = [];
+
 		function __construct()
 		{
 			// Flatten the multi-dimensional $buttons array into a one-dimensional array
-			$defaultButtons= call_user_func_array('array_merge', self::$defaultButtonPane);
+			$defaultButtons = call_user_func_array('array_merge', self::$defaultButtonPane);
 			// Convert the flattened array to an associative array where key = value
 			self::$defaultButtonsKeys = array_combine($defaultButtons, $defaultButtons);
 
@@ -127,14 +129,32 @@
 			// Convert the flattened array to an associative array where key = value
 			self::$fullButtonsKeys = array_combine($fullButtons, $fullButtons);
 
+
+			// Define the path to the plugins directory
+			$pluginsDir = e_PLUGIN . "trumbowyg/dist/plugins/";
+
+			// Get all files and directories in the 'plugins' directory
+			$allFiles = scandir($pluginsDir);
+
+			// Filter only directories, exclude . and .. entries
+			$plugins = array_filter($allFiles, function ($item) use ($pluginsDir)
+			{
+				return is_dir($pluginsDir . $item) && $item !== '.' && $item !== '..';
+			});
+
+			self::$availablePlugins = $plugins;
 		}
 
- 
-		// Method to get the default settings needed for preferences one dimensional array
+
+		public static function getAvailablePlugins($key = null)
+		{
+
+			return self::$availablePlugins;
+		}
 
 		public static function getDefaultPrefs($key = null)
 		{
- 
+
 			// Merge the flattened buttons array into the defaults
 			self::$defaults['btns'] = self::$defaultButtonsKeys;
 			self::$defaults['semantic'] = self::$semantic;
@@ -153,9 +173,8 @@
 
 		public static function getDefaultButtonsKeys()
 		{
- 
+
 			return  self::$defaultButtonsKeys;
- 
 		}
 
 		public static function getFullButtonsKeys()
@@ -181,7 +200,7 @@
 			{
 				return $value !== ''; // Keep only keys with non-empty values
 			});
-	 
+
 			return $array;
 		}
 
@@ -202,18 +221,19 @@
 				$level = "public";
 			}
 
-			if(e_ADMIN_AREA) {
+			if (e_ADMIN_AREA)
+			{
 
 				if (getperms('0'))
 				{
-					$level= "mainadmin";
+					$level = "mainadmin";
 				}
 				elseif (ADMIN)
 				{
 					$level = "admin";
 				}
 			}
- 
+
 			$curVal = $tmp[$level];
 
 			if (!$curVal || !is_array($curVal))
@@ -237,22 +257,23 @@
 
 		public static function getSettings()
 		{
-			$plugPrefs  = e107::pref('trumbowyg'); 
+			$pluginPrefs  = e107::pref('trumbowyg');
 
 			// Merge into defaults
 			$settings = self::$defaults;
-		 
+
 			//buttons
-			$b = (bool) $plugPrefs['trumbowyg_btns'];
-			if($b) {  //override only in this case
+			$b = (bool) $pluginPrefs['trumbowyg_btns'];
+			if ($b)
+			{  //override only in this case
 				$btns = self::buttonPane();
-				$settings['btns'] = $btns;	
+				$settings['btns'] = $btns;
 			}
 			else unset($settings['btns']);
-		 
+
 			//semantic reverse
 			$s = (bool) e107::pref('trumbowyg', 'trumbowyg_semantic');
-		 
+
 			if (!$s)
 			{   //override only in this case
 				$semantic = self::semantic();
@@ -260,7 +281,7 @@
 			}
 
 
-			$t = (bool) $plugPrefs['linkTargets'];
+			$t = (bool) $pluginPrefs['linkTargets'];
 			if ($t)
 			{  //override only in this case
 				$settings['linkTargets'] = ['_blank', '_self'];
@@ -268,78 +289,72 @@
 
 			$tagClasses = self::tagClasses();
 
-			$settings['changeActiveDropdownIcon']  =  (bool) $plugPrefs['changeActiveDropdownIcon'];
-			$settings['hideButtonTexts'] =	(bool) $plugPrefs['hideButtonTexts'];
-			$settings['resetcss'] =	(bool) $plugPrefs['resetcss'];
-			$settings['removeformatPasted'] = $plugPrefs['allowtagsfrompaste']; 
-			$settings['autogrow'] =	(bool) $plugPrefs['autogrow'];
-			$settings['imageWidthModalEdit'] =	(bool) $plugPrefs['imageWidthModalEdit'];
-			$settings['urlProtocol'] =	(bool) $plugPrefs['urlProtocol']; 
-			$settings['minimalLinks'] =	(bool) $plugPrefs['minimalLinks'];
+			$settings['changeActiveDropdownIcon']  =  (bool) $pluginPrefs['changeActiveDropdownIcon'];
+			$settings['hideButtonTexts'] =	(bool) $pluginPrefs['hideButtonTexts'];
+			$settings['resetcss'] =	(bool) $pluginPrefs['resetcss'];
+			$settings['removeformatPasted'] = $pluginPrefs['allowtagsfrompaste'];
+			$settings['autogrow'] =	(bool) $pluginPrefs['autogrow'];
+			$settings['imageWidthModalEdit'] =	(bool) $pluginPrefs['imageWidthModalEdit'];
+			$settings['urlProtocol'] =	(bool) $pluginPrefs['urlProtocol'];
+			$settings['minimalLinks'] =	(bool) $pluginPrefs['minimalLinks'];
 
- 
+
 
 			$settings['tagClasses'] = $tagClasses;
-			$tagsToRemove = $plugPrefs['tagsToRemove']; 
+			$tagsToRemove = $pluginPrefs['tagsToRemove'];
 			$settings['tagsToRemove'] = explode(',', $tagsToRemove);
 
-			$tagsToKeep = $plugPrefs['tagsToKeep']; 
+			$tagsToKeep = $pluginPrefs['tagsToKeep'];
 			$settings['tagsToKeep'] = explode(',', $tagsToKeep);
+
+
+			$plugins = self::$availablePlugins;
+
+			$config = e107::getTemplate('trumbowyg', 'plugins', NULL, 'front', false);
+
+			// Loop through plugins to dynamically include scripts
+			foreach ($plugins as $plugin)
+			{
+				$prefKey = "plugin_{$plugin}"; // Generate the preference key
+				if (!empty($pluginPrefs[$prefKey]))
+				{
+					if (!empty($config[$plugin]))
+					{
+						$settings['plugins'][$plugin] = $config[$plugin];
+					}
  
-			$a = (bool) $plugPrefs['plugin_allowtagsfrompaste']; 
+				}
+			}
+
+print_a($settings);
+			$a = (bool) $pluginPrefs['plugin_allowtagsfrompaste'];
 			if ($a)
 			{
-				$allowedtags =  $plugPrefs['allowtagsfrompaste']; 
+				$allowedtags =  $pluginPrefs['allowtagsfrompaste'];
 				$settings['plugins']['allowTagsFromPaste']['allowedTags'] = explode(',', $allowedtags);
 				unset($settings['tagsToKeep']);
 				unset($settings['tagsToRemove']);
-	
-			}
-
-			$fs = (bool) $plugPrefs['plugin_fontsize'];
-			$ff = (bool) $plugPrefs['plugin_fontfamily'];
-			if ($fs OR $ff)
-			{
-				$ft = e107::getTemplate('trumbowyg', 'fonts', NULL, 'front', false);
-			}
-
-			if (!empty($ft['fontfamily']))
-			{
-				$settings['plugins']['fontfamily'] = $ft['fontfamily'];
-			}
-			if (!empty($ft['fontsize']))
-			{
-				$settings['plugins']['fontsize'] = $ft['fontsize'];
 			}
  
-			$c = (bool) $plugPrefs['plugin_colors'];
-			 
+			$c = (bool) $pluginPrefs['plugin_colors'];
+
 			if ($c)
 			{
-				$at = e107::getTemplate('trumbowyg', 'colors', NULL, 'front', false);
-		 
-				if (!empty($at['colors']))
+ 
+				if (!empty($config['colorLabels']))
 				{
-					$settings['plugins']['colors'] = $at['colors'];
-					
-				}
-				if (!empty($at['colorLabels']))
-				{
-					$colorlabels = $at['colorLabels'];
+					$colorlabels = $config['colorLabels'];
 					$inlinecode = ' var colorLabels = ' .
-					json_encode($colorlabels, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '; ';
+						json_encode($colorlabels, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '; ';
 
 					$inlinecode .= ' $.each(colorLabels, function(colorHexCode, colorLabel) {
 						$.trumbowyg.langs.en[colorHexCode] = colorLabel;
 					})';
 
 					e107::js('header-inline', $inlinecode, 'jquery', 1);
-				 
 				}
-	  
-			 
 			}
- 
+
 			return $settings;
 		}
 	}
