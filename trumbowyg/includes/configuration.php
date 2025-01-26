@@ -133,14 +133,31 @@
 			// Define the path to the plugins directory
 			$pluginsDir = e_PLUGIN . "trumbowyg/dist/plugins/";
 
+			// List of plugins to skip
+			$skippedPlugins = ['mention', 'giphy'];
+
 			// Get all files and directories in the 'plugins' directory
 			$allFiles = scandir($pluginsDir);
 
+			// Initialize arrays to store the filtered plugins and skipped plugins
+			$plugins = [];
+
 			// Filter only directories, exclude . and .. entries
-			$plugins = array_filter($allFiles, function ($item) use ($pluginsDir)
+			foreach ($allFiles as $item)
 			{
-				return is_dir($pluginsDir . $item) && $item !== '.' && $item !== '..';
-			});
+				if (is_dir($pluginsDir . $item) && $item !== '.' && $item !== '..'
+				)
+				{
+					if (in_array($item, $skippedPlugins))
+					{
+						continue;
+					}
+					else
+					{
+						$plugins[] = $item; // Add to available plugins list
+					}
+				}
+			}
 
 			self::$availablePlugins = $plugins;
 		}
