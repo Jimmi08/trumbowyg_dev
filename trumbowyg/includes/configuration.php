@@ -136,7 +136,7 @@
 			$pluginsDir = e_PLUGIN . "trumbowyg/dist/plugins/";
 
 			// List of plugins to skip
-			$skippedPlugins = ['mention', 'giphy'];
+			$skippedPlugins = ['mention', 'giphy', 'mathml'];
 
 			// Get all files and directories in the 'plugins' directory
 			$allFiles = scandir($pluginsDir);
