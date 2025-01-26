@@ -51,6 +51,7 @@ class trumbowyg_parse
 	 */
 	function toHtml($text, $context = '')
 	{
+	
 		return $text;
 	}
 
@@ -74,6 +75,9 @@ class trumbowyg_parse
 		)
 		*/
 
+		//$text =  html_entity_decode($text, ENT_QUOTES | ENT_HTML5);
+		$text = str_replace(['&lt;', '&gt;'], ['<', '>'], $text);
+		 
 		$type = varset($param['type'], '');
 		$field = varset($param['field'], '');
 
