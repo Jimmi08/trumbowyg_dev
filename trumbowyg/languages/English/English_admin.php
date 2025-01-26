@@ -130,9 +130,6 @@ define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE_HELP", "This plugin allows you to add a te
 define("LAN_TRUMBOWYG_PLUGIN_UPLOAD", "");
 define("LAN_TRUMBOWYG_PLUGIN_UPLOAD_HELP", "");
 
-define("LAN_TRUMBOWYG_REMOVEFORMATPASTED", "Remove Format on Paste");
-define("LAN_TRUMBOWYG_REMOVEFORMATPASTED_HELP", "Automatically removes formatting when content is pasted into the editor.");
-
 define("LAN_TRUMBOWYG_REMOVEFORMAT_PASTED", "Remove Format on Pasted Content");
 define("LAN_TRUMBOWYG_REMOVEFORMAT_PASTED_HELP", "When enabled, pasted content will have formatting removed. You can override this with Tags to Remove or Tags to Keep ");
 

@@ -65,9 +65,9 @@ if ($enableOn)
 	{
 
 
-		e107::css("trumbowyg",  "dist/ui/trumbowyg{$key}.css");
+		e107::css("trumbowyg",  "dist/ui/trumbowyg{$min}.css");
 
-		e107::js("footer", e_PLUGIN . "trumbowyg/dist/trumbowyg{$key}.js", "jquery", 1);
+		e107::js("footer", e_PLUGIN . "trumbowyg/dist/trumbowyg{$min}.js", "jquery", 1);
 
 		$cssPlugins = ['colors', 'table', 'highlight'];
 
