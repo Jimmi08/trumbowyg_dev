@@ -88,11 +88,11 @@ define("LAN_TRUMBOWYG_PLUGIN_INSERTAUDIO_HELP", "Insert audio plugin lets you em
 define("LAN_TRUMBOWYG_PLUGIN_GIPHY", "");
 define("LAN_TRUMBOWYG_PLUGIN_GIPHY_HELP", "");
 
-define("LAN_TRUMBOWYG_PLUGIN_HIGHLIGHT", "");
-define("LAN_TRUMBOWYG_PLUGIN_HIGHLIGHT_HELP", "");
+define("LAN_TRUMBOWYG_PLUGIN_HIGHLIGHT", "Highlight plugin");
+define("LAN_TRUMBOWYG_PLUGIN_HIGHLIGHT_HELP", "This plugin allow you to add an code highlighter in Trumbowyg.");
 
-define("LAN_TRUMBOWYG_PLUGIN_LINEHEIGHT", "");
-define("LAN_TRUMBOWYG_PLUGIN_LINEHEIGHT_HELP", "");
+define("LAN_TRUMBOWYG_PLUGIN_LINEHEIGHT", "Line height plugin");
+define("LAN_TRUMBOWYG_PLUGIN_LINEHEIGHT_HELP", "This plugin allows user to custom line height.");
 
 define("LAN_TRUMBOWYG_PLUGIN_MATHML", "");
 define("LAN_TRUMBOWYG_PLUGIN_MATHML_HELP", "");

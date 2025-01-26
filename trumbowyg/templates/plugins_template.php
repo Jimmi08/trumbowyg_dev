@@ -7,6 +7,7 @@ $PLUGINS_TEMPLATE['colorLabels'] = array();
 $PLUGINS_TEMPLATE['fontfamily'] = array();
 $PLUGINS_TEMPLATE['fontsize'] = array();
 $PLUGINS_TEMPLATE['template'] = array();
+$PLUGINS_TEMPLATE['lineheight']= array();
 
 //Examples for using in theme
 // $PLUGINS_TEMPLATE['colors']['colorList'] = ['000', '111', '222', 'ffea00'];
@@ -32,6 +33,8 @@ $PLUGINS_TEMPLATE['template'] = array();
 
 // $PLUGINS_TEMPLATE['fontsize']['sizeList'] = ['12px','14px','16px'];
 // $PLUGINS_TEMPLATE['fontsize']['allowCustomSize'] = 0;
+
+//$PLUGINS_TEMPLATE['lineheight']['sizeList'] = ['12px', '14px', '16px'];
 
 
 $PLUGINS_TEMPLATE['template'] = [

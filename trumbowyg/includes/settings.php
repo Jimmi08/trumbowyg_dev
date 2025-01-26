@@ -544,6 +544,7 @@ class trumbowyg_btns_form_ui extends e_admin_form_ui
 		if ($pluginPrefs['plugin_indent']) $disabled['indent'] = 0;
 		if ($pluginPrefs['plugin_indent']) $disabled['outdent'] = 0;
 		if ($pluginPrefs['plugin_insertaudio']) $disabled['insertAudio'] = 0;
+		if ($pluginPrefs['plugin_lineheight']) $disabled['lineheight'] = 0;
 		if ($pluginPrefs['plugin_noembed']) $disabled['noembed'] = 0;
 	//	if ($pluginPrefs['plugin_pasteembed']) $disabled['pasteembed'] = 0;
 	//	if ($pluginPrefs['plugin_pasteimage']) $disabled['pasteimage'] = 0;

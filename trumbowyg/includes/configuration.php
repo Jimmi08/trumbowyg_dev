@@ -58,6 +58,7 @@
 			['formatting'],
 			['fontfamily'],
 			['fontsize'],
+			['lineheight'],
 			['foreColor', 'backColor'],
 			['specialChars'],
 			['strong', 'em', 'underline', 'del'],
