@@ -1,14 +1,3 @@
-/**
- * Trumbowyg v2.27.3 - A lightweight WYSIWYG editor
- * Default stylesheet for Trumbowyg editor
- * ------------------------
- * @link https://alex-d.github.io/Trumbowyg/
- * @license MIT
- * @author Alexandre Demode (Alex-D)
- *         Twitter : @AlexandreDemode
- *         Website : alex-d.fr
- */
-
 #trumbowyg-icons,
 .trumbowyg-icons {
   overflow: hidden;
@@ -29,7 +18,6 @@
 .trumbowyg-modal *::before,
 .trumbowyg-modal *::after {
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
 .trumbowyg-box svg,
@@ -42,15 +30,10 @@
 
 .trumbowyg-box {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-     -moz-box-orient: vertical;
-     -moz-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   min-height: 300px;
@@ -59,8 +42,6 @@
 .trumbowyg-editor-box {
   display: block;
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
-     -moz-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
@@ -86,7 +67,6 @@
 .trumbowyg-textarea {
   position: relative;
   -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
           box-sizing: border-box;
   padding: 20px;
   width: 100%;
@@ -102,7 +82,6 @@
 .trumbowyg-editor-box.trumbowyg-autogrow-on-enter,
 .trumbowyg-textarea.trumbowyg-autogrow-on-enter {
   -webkit-transition: height 300ms ease-out;
-  -o-transition: height 300ms ease-out;
   transition: height 300ms ease-out;
 }
 
@@ -156,8 +135,6 @@
 .trumbowyg-box.trumbowyg-editor-hidden .trumbowyg-textarea {
   display: block;
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
-     -moz-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin-bottom: 1px;
@@ -180,13 +157,10 @@
 
 .trumbowyg-button-pane {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
   min-height: 36px;
   background: #ecf0f1;
@@ -217,13 +191,10 @@
 }
 .trumbowyg-button-pane .trumbowyg-button-group {
   display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 .trumbowyg-button-pane .trumbowyg-button-group .trumbowyg-fullscreen-button svg {
   color: transparent;
@@ -253,7 +224,6 @@
   background: none;
   vertical-align: middle;
   -webkit-transition: background-color 150ms, opacity 150ms;
-  -o-transition: background-color 150ms, opacity 150ms;
   transition: background-color 150ms, opacity 150ms;
 }
 .trumbowyg-button-pane button.trumbowyg-textual-button {
@@ -332,7 +302,6 @@
   text-align: left;
   font-size: 15px;
   -webkit-transition: all 150ms;
-  -o-transition: all 150ms;
   transition: all 150ms;
 }
 .trumbowyg-dropdown button:hover, .trumbowyg-dropdown button:focus {
@@ -349,8 +318,6 @@
   top: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-       -o-transform: translateX(-50%);
           transform: translateX(-50%);
   max-width: 520px;
   width: 100%;
@@ -366,8 +333,6 @@
   top: 0;
   left: 50%;
   -webkit-transform: translateX(-50%);
-      -ms-transform: translateX(-50%);
-       -o-transform: translateX(-50%);
           transform: translateX(-50%);
   max-width: 500px;
   width: calc(100% - 20px);
@@ -401,7 +366,6 @@
   width: 0;
   height: 100%;
   -webkit-transition: width 150ms linear;
-  -o-transition: width 150ms linear;
   transition: width 150ms linear;
 }
 .trumbowyg-modal-box .trumbowyg-input-row {
@@ -413,7 +377,6 @@
 .trumbowyg-modal-box .trumbowyg-input-infos {
   text-align: left;
   -webkit-transition: all 150ms;
-  -o-transition: all 150ms;
   transition: all 150ms;
   width: 150px;
   border-right: 1px solid #dedede;
@@ -435,7 +398,6 @@
   height: 27px;
   line-height: 27px;
   -webkit-transition: all 150ms;
-  -o-transition: all 150ms;
   transition: all 150ms;
 }
 .trumbowyg-modal-box .trumbowyg-input-infos .trumbowyg-msg-error {
@@ -449,7 +411,6 @@
 }
 .trumbowyg-modal-box .trumbowyg-input-html input, .trumbowyg-modal-box .trumbowyg-input-html textarea, .trumbowyg-modal-box .trumbowyg-input-html select {
   -webkit-transition: all 150ms;
-  -o-transition: all 150ms;
   transition: all 150ms;
   height: 27px;
   line-height: 27px;
@@ -500,7 +461,6 @@
   font-family: "Trebuchet MS", Helvetica, Verdana, sans-serif;
   font-size: 16px;
   -webkit-transition: all 150ms;
-  -o-transition: all 150ms;
   transition: all 150ms;
 }
 .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit {
@@ -719,6 +679,7 @@ body.trumbowyg-body-fullscreen {
 .trumbowyg-dark .trumbowyg-button-pane {
   background-color: #222;
   border-bottom-color: #343434;
+  color: #fff;
 }
 .trumbowyg-dark .trumbowyg-button-pane::before, .trumbowyg-dark .trumbowyg-button-pane::after {
   background: #343434;

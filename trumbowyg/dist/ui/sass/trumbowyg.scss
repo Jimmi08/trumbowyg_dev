@@ -748,6 +748,7 @@ body.trumbowyg-body-fullscreen {
     .trumbowyg-button-pane {
         background-color: $dark-background-color-pane;
         border-bottom-color: $dark-border-color;
+        color: $dark-text-color;
 
         &::before,
         &::after {
