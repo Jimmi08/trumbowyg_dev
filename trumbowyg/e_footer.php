@@ -18,7 +18,7 @@ $pref = e107::getPref();
 
 $pluginPrefs = e107::pref('trumbowyg');
 $enableOn =  (int) varset($pluginPrefs['enableEditor'], 1);
-
+$darkmode =  (int) varset($pluginPrefs['darkMode'], 0);
 
 if ($enableOn)
 {
@@ -112,7 +112,28 @@ if ($enableOn)
 		e107::js('footer-inline', "
 				$('.e-wysiwyg').trumbowyg($javascriptSettings);
 				", 'jquery', 1);
-		 	
+
+
+		if($darkmode) {
+			// Select the existing Trumbowyg editor element
+			$darkmodeCode  = "const editor = document.querySelector('.trumbowyg-box');
+
+    				if (editor) {
+				
+					const wrapper = document.createElement('div');
+					wrapper.className = 'trumbowyg-dark';
+
+					// Wrap the editor
+					editor.parentNode.replaceChild(wrapper, editor);
+					wrapper.appendChild(editor);
+				 
+				 
+			}";
+
+			e107::js('footer-inline', $darkmodeCode, 'jquery', 1);
+
+		}
+ 	 	
 	}
 }
  
