@@ -17,6 +17,7 @@ define("LAN_TRUMBOWYG_ADMIN_03", "Custom Button Pane is currently disabled. Thes
 define("LAN_TRUMBOWYG_ADMIN_04", "Enable TrumboWyg Editor");
 define("LAN_TRUMBOWYG_ADMIN_04_HELP", "Disable editor if you are using/testing core tinymce editor.");
 define("LAN_TRUMBOWYG_ADMIN_05", "Custom buttons are disabled. Your settings will not be applied.");
+define("LAN_TRUMBOWYG_ADMIN_06", "Dark theme mode");
 
 define("LAN_TRUMBOWYG_ADMIN_OPT_01", "Enabled");
 define("LAN_TRUMBOWYG_ADMIN_OPT_02", "Disabled");

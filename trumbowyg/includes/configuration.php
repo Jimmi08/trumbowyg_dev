@@ -270,7 +270,7 @@
 				$settings['btns'] = $btns;
 			}
 			else unset($settings['btns']);
-
+ 
 			//semantic reverse
 			$s = (bool) e107::pref('trumbowyg', 'trumbowyg_semantic');
 
@@ -315,13 +315,17 @@
 			// Loop through plugins to dynamically include scripts
 			foreach ($plugins as $plugin)
 			{
+
 				$prefKey = "plugin_{$plugin}"; // Generate the preference key
 				if (!empty($pluginPrefs[$prefKey]))
 				{
-
+		 
+				 
 					if (!empty($config[$plugin]))
 					{
-						$settings['plugins'][$plugin] = $config[$plugin];
+						$pluginkey  = $plugin;
+						if($plugin == "template") $pluginkey = "templates"; 
+						$settings['plugins'][$pluginkey] = $config[$plugin];
 					}
  
 				}

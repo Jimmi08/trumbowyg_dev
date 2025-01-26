@@ -115,6 +115,7 @@ class trumbowyg_admin_ui extends e_admin_ui
 
 	protected $prefs = array(
 		'enableEditor'  		=> array('title' => LAN_TRUMBOWYG_ADMIN_04, 'type' => 'boolean', 'data' => 'int', 'help' => ""),
+		'darktheme' 			=> array('title' => LAN_TRUMBOWYG_ADMIN_06, 'type' => 'boolean', 'data' => 'int', 'help' => ""),
 		'trumbowyg_btns'        => array('title' => LAN_TRUMBOWYG_BTNS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_BTNS_HELP),
 		'changeActiveDropdownIcon' => array('title' => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP),
 		'hideButtonTexts' => array('title' => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP),

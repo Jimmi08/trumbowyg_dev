@@ -15,6 +15,7 @@
 	</adminLinks>
 	<pluginPrefs>
         <pref name="enableEditor"></pref>
+        <pref name="darktheme"></pref>
 		<pref name="trumbowyg_btns"></pref>
  		<pref name="trumbowyg_semantic">1</pref>
         <pref name="trumbowyg_removeformatPasted">0</pref>
@@ -31,28 +32,6 @@
         <pref name="tagClasses"></pref>
         <pref name="btns"></pref>
         <pref name="semantic"></pref>
-        <pref name="plugin_allowtagsfrompaste">0</pref>
-        <pref name="plugin_base64">0</pref>
-        <pref name="plugin_cleanpaste">0</pref>
-        <pref name="plugin_colors">0</pref>
-        <pref name="plugin_emoji">0</pref>
-        <pref name="plugin_fontsize">0</pref>
-        <pref name="plugin_fontfamily">0</pref>        
-        <pref name="plugin_history">0</pref>
-        <pref name="plugin_indent">0</pref>
-        <pref name="plugin_insertaudio">0</pref>
-        <pref name="plugin_noembed">0</pref>
-        <pref name="plugin_pasteembed">0</pref>
-        <pref name="plugin_pasteimage">0</pref>
-        <pref name="plugin_preformatted">0</pref>
-        <pref name="plugin_ruby">0</pref>
-        <pref name="plugin_specialchars">0</pref>
-        <pref name="plugin_table">0</pref>
-        <pref name="plugin_lineheight">0</pref>
-        <pref name="plugin_preformatted">0</pref>
-        <pref name="plugin_template">0</pref>
-  
- 
 	</pluginPrefs>
  
 </e107Plugin>
