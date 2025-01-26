@@ -103,7 +103,7 @@ if ($enableOn)
 	 
 		// Convert to JSON for JavaScript
 		//$jsonSettings = json_encode($trumbowygSettings, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-		$jsonSettings = json_encode($trumbowygSettings, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		$jsonSettings = json_encode($trumbowygSettings,  JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 		// Convert JSON to a JavaScript-like object
 		$javascriptSettings = preg_replace('/"([^"]+)":/', '$1:', $jsonSettings);
  
