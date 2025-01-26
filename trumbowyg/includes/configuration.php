@@ -71,6 +71,7 @@
 			['upload', 'base64', 'noembed'],
 			['table'], ['tableCellBackgroundColor', 'tableBorderColor'],
 			['preformatted'],
+			['highlight'],
 			['template'],
 			['removeformat'],
 			['fullscreen']
@@ -303,6 +304,7 @@
 			{  //override only in this case
 				$settings['linkTargets'] = ['_blank', '_self'];
 			}
+ 	
 
 			$tagClasses = self::tagClasses();
 

@@ -188,12 +188,11 @@ class trumbowyg_plugins_ui extends e_admin_ui
 		$caption = LAN_HELP;
 		$plugins = plugin_trumbowyg_configuration::getAvailablePlugins();
 
- 
+		$text = '';
 
 		// Loop through each plugin directory and generate help text dynamically
 		foreach ($plugins as $plugin)
 		{
- 
 			// Generate help text for each plugin
 			$text .= "<b>" . constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin)) . "</b><br>";
 			$text .= constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP') . "<br><hr>";
@@ -573,6 +572,7 @@ class trumbowyg_btns_form_ui extends e_admin_form_ui
 			$disabled['backColor'] = 0;
 		}
 		if ($pluginPrefs['plugin_template']) $disabled['template'] = 0;
+		if ($pluginPrefs['plugin_highlight']) $disabled['highlight'] = 0;
 
 		foreach ($buttons as $key => $label)
 		{

@@ -38,3 +38,13 @@ $PLUGINS_TEMPLATE['template'] = [
 		['name' => 'Template 1', 'html' => '<p>I am a template!</p>'],
 		['name' => 'Template 2', 'html' => '<p>I am a template!</p>']
 ];
+
+$PLUGINS_TEMPLATE['highlight']['enableLineHighlight'] = 1;
+$PLUGINS_TEMPLATE['highlight']['languageNames'] = [
+	'html' => 'HTML',
+	'xml' => 'XML',
+	'svg' => 'SVG',
+	'mathml' => 'MathML',
+	'ssml' => 'SSML',
+	'css' => 'CSS'
+];
