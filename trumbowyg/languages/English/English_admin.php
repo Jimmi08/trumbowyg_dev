@@ -112,8 +112,8 @@ define("LAN_TRUMBOWYG_PLUGIN_PASTEIMAGE_HELP", "Paste image plugin allows direct
 define("LAN_TRUMBOWYG_PLUGIN_PREFORMATTED", "Preformatted");
 define("LAN_TRUMBOWYG_PLUGIN_PREFORMATTED_HELP", "Preformatted plugin helps you insert preformatted text into the editor.");
 
-define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG", "");
-define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG_HELP", "");
+define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG", "Resizimg plugin");
+define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG_HELP", "Images can be resized by click over the image and dragging their bottom-right corner (the white ones).");
 
 define("LAN_TRUMBOWYG_PLUGIN_RUBY", "Ruby");
 define("LAN_TRUMBOWYG_PLUGIN_RUBY_HELP", "Ruby plugin lets you add ruby annotations to your content.");

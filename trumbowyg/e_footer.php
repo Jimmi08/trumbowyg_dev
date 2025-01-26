@@ -26,7 +26,14 @@ if ($enableOn)
 
 		e107::js('trumbowyg', 'vendors/prism/prism.min.js', "jquery", 1);
 		e107::js('trumbowyg', 'vendors/prism/plugins/line-highlight/prism-line-highlight.min.js', "jquery", 1);
-	} 
+	}
+
+	if ($pluginPrefs['plugin_resizimg'])
+	{
+
+		e107::js('trumbowyg', 'vendors/jquery-resizable/jquery-resizable.min.js', "jquery", 1);
+ 
+	}
 
 
 	$code = '
