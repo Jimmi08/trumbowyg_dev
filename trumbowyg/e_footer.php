@@ -14,15 +14,19 @@ if (!defined('e107_INIT'))
 }
 
 $pref = e107::getPref();
-
-
 $pluginPrefs = e107::pref('trumbowyg');
 $enableOn =  (int) varset($pluginPrefs['enableEditor'], 1);
 $darkmode =  (int) varset($pluginPrefs['darkMode'], 0);
-
+ 
 if ($enableOn)
 {
 
+	if ($pluginPrefs['plugin_highlight'])
+	{
+
+		e107::js('trumbowyg', 'vendors/prism/prism.min.js', "jquery", 1);
+		e107::js('trumbowyg', 'vendors/prism/plugins/line-highlight/prism-line-highlight.min.js', "jquery", 1);
+	} 
 
 
 	$code = '
@@ -46,7 +50,7 @@ if ($enableOn)
 	';
 
 	e107::css('inline', $code);
-
+ 
 
     $min = '';
 	$css = 'css/';
@@ -55,11 +59,10 @@ if ($enableOn)
 
 
 		e107::css("trumbowyg",  "dist/ui/trumbowyg{$key}.css");
-	
 
 		e107::js("footer", e_PLUGIN . "trumbowyg/dist/trumbowyg{$key}.js", "jquery", 1);
 
-		$cssPlugins = ['colors', 'table'];
+		$cssPlugins = ['colors', 'table', 'highlight'];
 
 		foreach ($cssPlugins as $key)
 		{
@@ -68,6 +71,9 @@ if ($enableOn)
 				e107::css("trumbowyg", "dist/plugins/{$key}/ui/{$css}trumbowyg.{$key}{$min}.css");
 			}
 		}
+
+
+ 
 		new plugin_trumbowyg_configuration;
 		$plugins = plugin_trumbowyg_configuration::getAvailablePlugins();
  
@@ -102,8 +108,12 @@ if ($enableOn)
 		$trumbowygSettings = plugin_trumbowyg_configuration::getSettings();
 	 
 		// Convert to JSON for JavaScript
-		//$jsonSettings = json_encode($trumbowygSettings, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-		$jsonSettings = json_encode($trumbowygSettings,  JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		if(e_DEBUG) {
+			$jsonSettings = json_encode($trumbowygSettings, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		}
+		else {
+			$jsonSettings = json_encode($trumbowygSettings,  JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		}
 		// Convert JSON to a JavaScript-like object
 		$javascriptSettings = preg_replace('/"([^"]+)":/', '$1:', $jsonSettings);
  
