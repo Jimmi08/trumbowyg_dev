@@ -86,8 +86,8 @@ $BUTTONPANE_TEMPLATE['signature'] = [
 //$BUTTONPANE_TEMPLATE['signature'] =  NULL; //callback to level templates, no custom buttons
 //$BUTTONPANE_TEMPLATE['signature'] = [];      //no buttons
 
-$BUTTONPANE_TEMPLATE['submitnews'] = [];
-$BUTTONPANE_TEMPLATE['mailout'] = [];
+$BUTTONPANE_TEMPLATE['submitnews'] = []; //not tested
+$BUTTONPANE_TEMPLATE['mailout'] = []; //not tested
 
-$BUTTONPANE_TEMPLATE['newspost'] = [];
-$BUTTONPANE_TEMPLATE['cpage'] = "";
+$BUTTONPANE_TEMPLATE['news_body'] = NULL;
+$BUTTONPANE_TEMPLATE['cpage'] = NULL;

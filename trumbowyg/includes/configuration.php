@@ -57,6 +57,8 @@
 
 		private static $defaults = [];
 		private static $availablePlugins = [];
+		private static $availableLangs = [];
+
 
 		function __construct()
 		{
@@ -92,7 +94,35 @@
 			}
 
 			self::$availablePlugins = $plugins;
+
+			// Define the path to the lans directory
+			$pluginsDir = e_PLUGIN . "trumbowyg/dist/langs/";
+
+			// Get all files and directories in the 'plugins' directory
+			$allFiles = scandir($pluginsDir);
+			$languages = [];
+			foreach ($allFiles as $file)
+			{
+				if (preg_match('/^([a-z]{2})\.(min\.)?js$/', $file, $matches))
+				{
+					$languages[$matches[1]] = $matches[1]; // Add key-value pair
+				}
+			}
+  
+			$el = e107::getLanguage()->getList();
+	
+			$tl = array_intersect_key($languages, $el);
+ 	 
+			self::$availableLangs = $tl;
 		}
+
+
+
+		public static  function getLangs()
+		{
+			return self::$availableLangs;
+		}
+		 
 
 
 		public static function getAvailablePlugins($key = null)
@@ -184,7 +214,10 @@
 
 			if (empty($bt))
 			{
+				$btns = $bt;  //just saving time, result bellow is the same
+				return $btns;
 			}
+
 			// Step 1: Flatten $bl into a single array
 			$bl_flattened = array_merge(...$bl);
 
@@ -203,10 +236,20 @@
 		{
 			$pluginPrefs  = e107::pref('trumbowyg');
 
+			$el = self::getLangs();
+ 
+			$lang = CORE_LC;
+
 
 			// Merge into defaults
 			$settings = self::$defaults;
 
+			if (!isset($el[$lang]))
+			{
+				$lang = "en";
+			}
+			$settings['lang'] = $lang;
+ 
 			//buttons
 			$b = (bool) $pluginPrefs['trumbowyg_btns'];
 			if ($b)

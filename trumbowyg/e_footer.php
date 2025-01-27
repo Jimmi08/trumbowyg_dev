@@ -18,8 +18,22 @@ $pluginPrefs = e107::pref('trumbowyg');
 $enableOn =  (int) varset($pluginPrefs['enableEditor'], 1);
 $darkmode =  (int) varset($pluginPrefs['darkMode'], 0);
  
+$min = '';
+
 if ($enableOn)
 {
+	new plugin_trumbowyg_configuration;
+
+	$el = plugin_trumbowyg_configuration::getLangs();
+
+	$lang = CORE_LC;
+	if (!isset($el[$lang]))
+	{
+		$lang = "en";
+	}
+
+	e107::js("footer", e_PLUGIN . "trumbowyg/dist/langs/{$lang}{$min}.js", "jquery", 1);
+ 
 
 	if ($pluginPrefs['plugin_highlight'])
 	{
@@ -81,7 +95,7 @@ if ($enableOn)
 
 
  
-		new plugin_trumbowyg_configuration;
+		
 		$plugins = plugin_trumbowyg_configuration::getAvailablePlugins();
  
 		// Loop through plugins to dynamically include scripts
