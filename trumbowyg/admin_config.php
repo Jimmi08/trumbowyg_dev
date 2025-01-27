@@ -27,7 +27,7 @@ if (isset($_POST['check-public']) OR isset($_POST['check-member']) OR isset($_PO
 
 	$curVal = e107::unserialize($btns);
 	if (isset($_POST['check-mainadmin'])) $curVal['mainadmin'] = $buttonPane;
-    if (isset($_POST['check-public'])) $curVal['public'] = $buttons;
+    if (isset($_POST['check-public'])) $curVal['public'] = array();
 	if (isset($_POST['check-member'])) $curVal['member'] = $buttons;
 	if (isset($_POST['check-admin']))  $curVal['admin'] = $buttons;
  
@@ -83,7 +83,7 @@ if (isset($_POST['tagClasses-reset']))
 
 
 
-new plugin_trumbowyg_settings();
+new plugin_trumbowyg_prefs();
 require_once(e_ADMIN . "auth.php");
 //download/includes/admin.php is auto-loaded. 
 e107::getAdminUI()->runPage();

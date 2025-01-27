@@ -18,7 +18,7 @@ e107::lan('trumbowyg', true, true);
 /**
  * Class trumbowyg_admin_config.
  */
-class plugin_trumbowyg_settings extends e_admin_dispatcher
+class plugin_trumbowyg_prefs extends e_admin_dispatcher
 {
 
 
