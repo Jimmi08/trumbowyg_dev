@@ -115,6 +115,12 @@ class trumbowyg_parse
 		{
 			return $text;
 		}
+		
+		//takes first key in multiple use on one page f.e. for news it is news_body (news_body, news_extended) 
+		if (!deftrue('e_TRUMBOWYG_TEMPLATE') && !empty($param['field']))
+		{
+			define('e_TRUMBOWYG_TEMPLATE', $param['field']);  
+		}
  
 		$isHtml = false;
 		$content = $text;

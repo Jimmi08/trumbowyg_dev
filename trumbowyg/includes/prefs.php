@@ -29,12 +29,7 @@ class plugin_trumbowyg_prefs extends e_admin_dispatcher
 			'ui'         => 'trumbowyg_admin_form_ui',
 			'uipath'     => null
 		),
-		'btns' => array(
-			'controller' => 'trumbowyg_btns_ui',
-			'path'       => null,
-			'ui'         => 'trumbowyg_btns_form_ui',
-			'uipath'     => null
-		),
+ 
 		'semantic' => array(
 			'controller' => 'trumbowyg_semantic_ui',
 			'path'       => null,
@@ -72,11 +67,7 @@ class plugin_trumbowyg_prefs extends e_admin_dispatcher
 			'caption' => LAN_TRUMBOWYG_ADMIN_NAV_04,
 			'perm'    => 'P',
 		),
-
-		'btns/prefs' => array(
-			'caption' => LAN_TRUMBOWYG_ADMIN_NAV_01,
-			'perm'    => 'P',
-		),
+ 
 		'semantic/prefs' => array(
 			'caption' => LAN_TRUMBOWYG_ADMIN_NAV_02,
 			'perm'    => 'P',
@@ -116,8 +107,7 @@ class trumbowyg_admin_ui extends e_admin_ui
 	protected $prefs = array(
 		'enableEditor'  		=> array('title' => LAN_TRUMBOWYG_ADMIN_04, 'type' => 'boolean', 'data' => 'int', 'help' => ""),
 		'darkMode' 			=> array('title' => LAN_TRUMBOWYG_ADMIN_06, 'type' => 'boolean', 'data' => 'int', 'help' => ""),
-		'trumbowyg_btns'        => array('title' => LAN_TRUMBOWYG_BTNS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_BTNS_HELP),
-		'changeActiveDropdownIcon' => array('title' => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP),
+ 		'changeActiveDropdownIcon' => array('title' => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP),
 		'hideButtonTexts' => array('title' => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP),
 		'trumbowyg_semantic'            => array('title' => LAN_TRUMBOWYG_SEMANTIC, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_SEMANTIC_HELP),
 		'trumbowyg_removeformatPasted'  => array('title' => LAN_TRUMBOWYG_REMOVEFORMAT_PASTED, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_REMOVEFORMAT_PASTED_HELP),
@@ -134,8 +124,7 @@ class trumbowyg_admin_ui extends e_admin_ui
 		$caption = LAN_HELP;
 		$text = '';
 		$text .= "<b>" . LAN_TRUMBOWYG_ADMIN_04 . "</b><br>" . LAN_TRUMBOWYG_ADMIN_04_HELP . "<br><hr>";
-		$text .= "<b>" . LAN_TRUMBOWYG_BTNS . "</b><br>" . LAN_TRUMBOWYG_BTNS_HELP . "<br><hr>";
-		$text .= "<b>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON . "</b><br>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP . "<br><hr>";
+ 		$text .= "<b>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON . "</b><br>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS . "</b><br>" . LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_SEMANTIC . "</b><br>" . LAN_TRUMBOWYG_SEMANTIC_HELP . "<br>" . LAN_TRUMBOWYG_SEMANTIC_HELP2
 			. "<br><hr>";
@@ -199,14 +188,6 @@ class trumbowyg_plugins_ui extends e_admin_ui
 		}
  
  
-		if($this->getMode() == 'plugins') {
-				$allowed =  e107::pref('trumbowyg', 'trumbowyg_btns');
-				if (!$allowed)
-				{
-					$text  .= e107::getMessage()->addWarning(LAN_TRUMBOWYG_ADMIN_05)->render();
-				}
-		}
- 
 		return array('caption' => $caption, 'text' => $text);
 	}
 
@@ -243,42 +224,7 @@ class trumbowyg_plugins_ui extends e_admin_ui
 
 }
 
-
-class trumbowyg_btns_ui extends trumbowyg_admin_ui
-{
-	protected $prefs = array(
-
-		'btns'                => array(
-
-			'type' => 'method',
-			'data' => 'json',
-			'tab' => 0,
-
-			'width' => 'auto',
-			'help' => '',
-			'readParms' =>  array(),
-			'writeParms' =>  array('nolabel' => 1),
-			'class' => 'left',
-			'thclass' => 'left',
-			'filter' => false,
-			'batch' => false,
-		),
-
-	);
-
-	public function renderHelp()
-	{
-		$caption = LAN_HELP;
-		$text = '';
-		$text .= "<b>" . LAN_TRUMBOWYG_BTNS . "</b><br>" . LAN_TRUMBOWYG_BTNS_HELP;
-
-		$mes = e107::getMessage();
-
-
-
-		return array('caption' => $caption, 'text' => $text);
-	}
-}
+ 
 
 class trumbowyg_semantic_ui extends trumbowyg_admin_ui
 {
@@ -497,135 +443,4 @@ class trumbowyg_admin_form_ui extends e_admin_form_ui
 	}
 }
 
-class trumbowyg_btns_form_ui extends e_admin_form_ui
-{
-
-	function btns($curVal, $mode)
-	{
-		$text =  "";
-
-		$pluginPrefs = e107::pref('trumbowyg');
-
-		$available  =  e107::pref('trumbowyg', 'trumbowyg_btns');
-
-		if (!$available)
-		{
-			$text = e107::getMessage()->addWarning(LAN_TRUMBOWYG_ADMIN_03)->render();
-		}
-
-
-		$access_level = ['public' => 'Public', 'member' => "Members", 'admin' => "Admins", 'mainadmin' => ' Main admins',];
-
-		$buttons = plugin_trumbowyg_configuration::getFullButtonsKeys(); //all buttons
-
-		$tmp = $buttons;
-		$disabled = array_fill_keys(array_keys($buttons), 1);
-
-		$d  = plugin_trumbowyg_configuration::getDefaultButtonsKeys();
-
-		foreach ($disabled as $key => $value)
-		{
-			if (in_array($key, $d))
-			{  // Check if the key exists in $d array
-				$disabled[$key] = 0; // Set value to 0 if key is found in $d
-			}
-		}
-
-		foreach ($buttons as $key => $label)
-		{
-			if ($disabled[$key]) $buttons[$key] = "<em>" . $label .  "</em> [*]";
-		}
-
-		if ($pluginPrefs['plugin_base64']) $disabled['base64'] = 0;
-		if ($pluginPrefs['plugin_emoji']) $disabled['emoji'] = 0;
-	//	if ($pluginPrefs['plugin_cleanpaste']) $disabled['cleanpaste'] = 0;
-		if ($pluginPrefs['plugin_history']) $disabled['historyUndo'] = 0;
-		if ($pluginPrefs['plugin_history']) $disabled['historyRedo'] = 0;
-		if ($pluginPrefs['plugin_indent']) $disabled['indent'] = 0;
-		if ($pluginPrefs['plugin_indent']) $disabled['outdent'] = 0;
-		if ($pluginPrefs['plugin_insertaudio']) $disabled['insertAudio'] = 0;
-		if ($pluginPrefs['plugin_lineheight']) $disabled['lineheight'] = 0;
-		if ($pluginPrefs['plugin_noembed']) $disabled['noembed'] = 0;
-	//	if ($pluginPrefs['plugin_pasteembed']) $disabled['pasteembed'] = 0;
-	//	if ($pluginPrefs['plugin_pasteimage']) $disabled['pasteimage'] = 0;
-		if ($pluginPrefs['plugin_preformatted']) $disabled['preformatted'] = 0;
-		if ($pluginPrefs['plugin_ruby']) $disabled['ruby'] = 0;
-		if ($pluginPrefs['plugin_specialchars']) $disabled['specialChars'] = 0;
-		if ($pluginPrefs['plugin_table']) { 
-			$disabled['table'] = 0;
-			$disabled['tableCellBackgroundColor'] = 0;
-			$disabled['tableBorderColor'] = 0;
-		}
-
-		if ($pluginPrefs['plugin_fontsize'])
-		{
-			$disabled['fontsize'] = 0;
-		}
-
-		if ($pluginPrefs['plugin_fontfamily'])
-		{
-			$disabled['fontfamily'] = 0;
-		}
-
-		if ($pluginPrefs['plugin_colors'])
-		{
-			$disabled['foreColor'] = 0;
-			$disabled['backColor'] = 0;
-		}
-		if ($pluginPrefs['plugin_template']) $disabled['template'] = 0;
-		if ($pluginPrefs['plugin_highlight']) $disabled['highlight'] = 0;
-
-		foreach ($buttons as $key => $label)
-		{
-			if ($disabled[$key]) $buttons[$key] = "<strike>" . $label .  "</strike> [*]";
-		}
-
-		$buttons['viewHTML'] = "<i class='fa fa-code'></i> " . $buttons['viewHTML'];
-		$buttons['formatting'] = "<i class='fa fa-paragraph'></i> " . $buttons['formatting'];
-
-		$text .= "<div class='e-container'>";
-		$text .= "<table class='table table-striped table-bordered' style='margin-bottom:40px'>
-					<colgroup>
-						<col style='min-width:300px' />
-						<col style='width:auto' />
-				 
-					</colgroup>";
-
-		$text .= "<tr><th>Access Level</th><th>Available buttons</th> </tr>";
-
-		foreach ($access_level as $page => $val)
-		{
-
-			$value = $curVal[$page];
-
-			$text .= "<tr><td><b>" . $page . ":</b><br>(" . $val . ")";
-
-			$text .= "<div class='buttons-bar center'> Check Defaults ";
-			$text .= $this->renderElement('check-' . $page, false, array('type' => 'checkbox'));
-			$text .= "</div>";
-
-
-			$text .= "<div class='buttons-bar center'> Uncheck all ";
-			$text .= $this->renderElement('uncheck-' . $page, false, array('type' => 'checkbox'));
-			$text .= "</div>";
-
-
-			$text .= " 
-			</td><td>";
-			$field = array('type' => 'checkboxes', 'writeParms' =>  ['optArray' => $buttons, 'useKeyValues' => true, 'inline' => true]);
-
-			$text .= $this->renderElement('btns[' . $page . '][]', $curVal[$page], $field);
-			$text .= "</td><td>";
-			$text .= "</td></tr>";
-		}
-		$text .= "</table>";
-		/* Note for Alex. Sorry for inline style, fix me */
-		$text .= "<style> .checkbox-inline {min-width: 300px;}
-				#btns-public-container .checkbox-inline  {margin-left: 20px!important; } 
-				#btns-member-container .checkbox-inline  {margin-left: 20px!important; } 
-				#btns-admin-container .checkbox-inline  {margin-left: 20px!important; } 
-				#btns-mainadmin-container .checkbox-inline  {margin-left: 20px!important; } 
-				</style>";
-		return $text;
-	}
-}
+ 

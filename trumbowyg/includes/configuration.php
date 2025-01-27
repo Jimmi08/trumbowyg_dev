@@ -9,38 +9,6 @@
 	class plugin_trumbowyg_configuration
 	{
 
-		// Define the default settings as a static property
-		public static $defaults = [
-			'btns' => [], // Customize toolbar buttons as needed
-			'semantic' => true, // Use semantic elements like <strong> and <em>
-			'removeformatPasted' => false, // Retain formatting when pasting content
-			'resetCss' => false, // Do not apply reset CSS to the editor
-			'autogrow' => false, // Disable auto-growing of the editor
-			'imageWidthModalEdit' => false, // Disable image width editing in modal
-			'urlProtocol' => false, // Do not auto-prefix URLs with a protocol
-			'minimalLinks' => false, // Use full link options in the modal
-			'tagsToRemove' => [], // No tags are removed by default
-			'tagsToKeep' => ['hr', 'img', 'embed', 'iframe', 'input'], // Default tags to keep
-			'tagClasses' => [], // No additional classes are applied to tags
-			'changeActiveDropdownIcon' => false,
-			'hideButtonTexts' => false,
-		];
-
-		// Define additional buttons or other settings
-		private static $defaultButtonPane = [
-			['viewHTML'], // Group for HTML view
-			['undo', 'redo'], // Undo/redo (only supported in Blink browsers)
-			['formatting'], // Formatting options
-			['strong', 'em', 'del'], // Text styling
-			['superscript', 'subscript'], // Superscript and subscript
-			['link'], // Hyperlink options
-			['insertImage'], // Image insertion
-			['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'], // Text alignment
-			['unorderedList', 'orderedList'], // Lists
-			['horizontalRule'], // Horizontal rule
-			['removeformat'], // Remove formatting
-			['fullscreen'], // Fullscreen mode
-		];
 
 		private static $semantic = array(
 			'b' => 'strong',
@@ -50,33 +18,6 @@
 			'div' => 'p'
 		);
 
-		// Define groups and their corresponding buttons
-		private static $fullButtonPane = [
-			['viewHTML'],
-			['undo', 'redo'], // Only supported in Blink browsers
-			['historyUndo', 'historyRedo'],
-			['formatting'],
-			['fontfamily'],
-			['fontsize'],
-			['lineheight'],
-			['foreColor', 'backColor'],
-			['specialChars'],
-			['strong', 'em', 'underline', 'del'],
-			['superscript', 'subscript'],
-			['link'],
-			['emoji'],
-			['insertImage'],
-			['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-			['unorderedList', 'orderedList'],
-			['horizontalRule'],
-			['upload', 'base64', 'noembed'],
-			['table'], ['tableCellBackgroundColor', 'tableBorderColor'],
-			['preformatted'],
-			['highlight'],
-			['template'],
-			['removeformat'],
-			['fullscreen']
-		];
 
 		private static 	$tagClasses = array(
 			"h1" => "",
@@ -114,29 +55,17 @@
 			"hr" => ""
 		);
 
-		private static $defaultButtonsKeys = [];
-		private static $fullButtonsKeys = [];
-
+		private static $defaults = [];
 		private static $availablePlugins = [];
 
 		function __construct()
 		{
-			// Flatten the multi-dimensional $buttons array into a one-dimensional array
-			$defaultButtons = call_user_func_array('array_merge', self::$defaultButtonPane);
-			// Convert the flattened array to an associative array where key = value
-			self::$defaultButtonsKeys = array_combine($defaultButtons, $defaultButtons);
-
-			// Flatten the multi-dimensional $buttons array into a one-dimensional array
-			$fullButtons = call_user_func_array('array_merge', self::$fullButtonPane);
-			// Convert the flattened array to an associative array where key = value
-			self::$fullButtonsKeys = array_combine($fullButtons, $fullButtons);
-
 
 			// Define the path to the plugins directory
 			$pluginsDir = e_PLUGIN . "trumbowyg/dist/plugins/";
 
 			// List of plugins to skip
-			$skippedPlugins = ['mention', 'giphy', 'mathml'];
+			$skippedPlugins = ['mention', 'giphy','mathml', 'upload'];
 
 			// Get all files and directories in the 'plugins' directory
 			$allFiles = scandir($pluginsDir);
@@ -147,7 +76,8 @@
 			// Filter only directories, exclude . and .. entries
 			foreach ($allFiles as $item)
 			{
-				if (is_dir($pluginsDir . $item) && $item !== '.' && $item !== '..'
+				if (
+					is_dir($pluginsDir . $item) && $item !== '.' && $item !== '..'
 				)
 				{
 					if (in_array($item, $skippedPlugins))
@@ -175,7 +105,7 @@
 		{
 
 			// Merge the flattened buttons array into the defaults
-			self::$defaults['btns'] = self::$defaultButtonsKeys;
+
 			self::$defaults['semantic'] = self::$semantic;
 			self::$defaults['tagClasses'] = self::$tagClasses;
 
@@ -188,18 +118,6 @@
 			}
 
 			return self::$defaults;
-		}
-
-		public static function getDefaultButtonsKeys()
-		{
-
-			return  self::$defaultButtonsKeys;
-		}
-
-		public static function getFullButtonsKeys()
-		{
-
-			return  self::$fullButtonsKeys;
 		}
 
 
@@ -226,10 +144,14 @@
 		// Static method to handle button grouping
 		public static function buttonPane()
 		{
-			$curVal = e107::pref('trumbowyg', 'btns');
-			$tmp = e107::unserialize($curVal);
 
-			$buttonGroups = self::$fullButtonPane;
+			// merge = true for non core plugins
+			$buttonpane = e107::getTemplate('trumbowyg', 'buttonpane', NULL, 'front', true);
+
+			if (deftrue('e_TRUMBOWYG_TEMPLATE'))
+			{
+				$bt = $buttonpane[e_TRUMBOWYG_TEMPLATE];
+			}
 
 			if (USER)
 			{
@@ -252,31 +174,35 @@
 					$level = "admin";
 				}
 			}
+			$bl =  $buttonpane[$level];
 
-			$curVal = $tmp[$level];
-
-			if (!$curVal || !is_array($curVal))
+			if (is_null($bt))
 			{
-				$curVal = []; // Default to an empty array if no preferences are found
+				$btns = $bl;
+				return $btns;
 			}
 
-			$btns = [];
-			foreach ($buttonGroups as $group)
+			if (empty($bt))
 			{
-				// Only include buttons that exist in $curVal
-				$filteredGroup = array_values(array_intersect($group, $curVal)); // Ensure proper re-indexing
-				if (!empty($filteredGroup))
-				{
-					$btns[] = $filteredGroup;
-				}
 			}
+			// Step 1: Flatten $bl into a single array
+			$bl_flattened = array_merge(...$bl);
 
+			// Step 2: Filter $bt to retain only values present in $bl_flattened
+			$filtered_bt = array_map(function ($subarray) use ($bl_flattened)
+			{
+				return array_values(array_intersect($subarray, $bl_flattened));
+			}, $bt);
+
+			// Step 3: Remove empty subarrays from $filtered_bt
+			$btns = array_filter($filtered_bt);
 			return $btns;
 		}
 
 		public static function getSettings()
 		{
 			$pluginPrefs  = e107::pref('trumbowyg');
+
 
 			// Merge into defaults
 			$settings = self::$defaults;
@@ -289,7 +215,7 @@
 				$settings['btns'] = $btns;
 			}
 			else unset($settings['btns']);
- 
+
 			//semantic reverse
 			$s = (bool) e107::pref('trumbowyg', 'trumbowyg_semantic');
 
@@ -305,7 +231,7 @@
 			{  //override only in this case
 				$settings['linkTargets'] = ['_blank', '_self'];
 			}
- 	
+
 
 			$tagClasses = self::tagClasses();
 
@@ -339,18 +265,17 @@
 				$prefKey = "plugin_{$plugin}"; // Generate the preference key
 				if (!empty($pluginPrefs[$prefKey]))
 				{
-		 
-				 
+
+
 					if (!empty($config[$plugin]))
 					{
 						$pluginkey  = $plugin;
-						if($plugin == "template") $pluginkey = "templates"; 
+						if ($plugin == "template") $pluginkey = "templates";
 						$settings['plugins'][$pluginkey] = $config[$plugin];
 					}
- 
 				}
 			}
- 
+
 			$a = (bool) $pluginPrefs['plugin_allowtagsfrompaste'];
 			if ($a)
 			{
@@ -359,12 +284,12 @@
 				unset($settings['tagsToKeep']);
 				unset($settings['tagsToRemove']);
 			}
- 
+
 			$c = (bool) $pluginPrefs['plugin_colors'];
 
 			if ($c)
 			{
- 
+
 				if (!empty($config['colorLabels']))
 				{
 					$colorlabels = $config['colorLabels'];

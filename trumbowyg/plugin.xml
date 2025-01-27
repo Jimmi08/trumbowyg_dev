@@ -16,7 +16,6 @@
 	<pluginPrefs>
         <pref name="enableEditor"></pref>
         <pref name="darkMode"></pref>
-		<pref name="trumbowyg_btns"></pref>
  		<pref name="trumbowyg_semantic">1</pref>
         <pref name="trumbowyg_removeformatPasted">0</pref>
         <pref name="resetCss">0</pref>
@@ -30,7 +29,6 @@
         <pref name="tagsToKeep">hr,img,embed,iframe,input</pref>
         <pref name="allowtagsfrompaste">b,em,i,strong</pref>
         <pref name="tagClasses"></pref>
-        <pref name="btns"></pref>
         <pref name="semantic"></pref>
 	</pluginPrefs>
  

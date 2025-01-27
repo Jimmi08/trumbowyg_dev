@@ -16,48 +16,6 @@ if(!e107::isInstalled('trumbowyg') || !getperms("P"))
 e107::lan('trumbowyg', true, true);
 new plugin_trumbowyg_configuration();
  
-if (isset($_POST['check-public']) OR isset($_POST['check-member']) OR isset($_POST['check-admin']) or isset($_POST['check-mainadmin']) )
-{
-
-	$buttons = plugin_trumbowyg_configuration::getDefaultButtonsKeys();
-	$buttonPane = plugin_trumbowyg_configuration::getFullButtonsKeys();
- 
-	$pluginPref = e107::getPlugConfig('trumbowyg')->getPref();
-	$btns = e107::pref('trumbowyg', 'btns');
-
-	$curVal = e107::unserialize($btns);
-	if (isset($_POST['check-mainadmin'])) $curVal['mainadmin'] = $buttonPane;
-    if (isset($_POST['check-public'])) $curVal['public'] = array();
-	if (isset($_POST['check-member'])) $curVal['member'] = $buttons;
-	if (isset($_POST['check-admin']))  $curVal['admin'] = $buttons;
- 
-	$tmp = json_encode($curVal);
-	$pluginPref['btns'] = $tmp ;
- 
-	e107::getPlugConfig('trumbowyg', '', false)->setPref($pluginPref)->save(false, true);
-	// Redirect back to the current page
-	e107::redirect(e_REQUEST_URL);
-}
-
-if (isset($_POST['uncheck-public']) or isset($_POST['uncheck-member']) or isset($_POST['uncheck-admin']) or isset($_POST['uncheck-mainadmin']))
-{
-
-	$pluginPref = e107::getPlugConfig('trumbowyg')->getPref();
-	$btns = e107::pref('trumbowyg', 'btns');
-
-	$curVal = e107::unserialize($btns);
-	if (isset($_POST['uncheck-mainadmin'])) $curVal['mainadmin'] = [];
-	if (isset($_POST['uncheck-public'])) $curVal['public'] = [];
-	if (isset($_POST['uncheck-member'])) $curVal['member'] = []; // Empty 'member'
-	if (isset($_POST['uncheck-admin']))  $curVal['admin'] = [];
-
-	$tmp = json_encode($curVal);
-	$pluginPref['btns'] = $tmp;
-
-	e107::getPlugConfig('trumbowyg', '', false)->setPref($pluginPref)->save(false, true);
-	// Redirect back to the current page
-	e107::redirect(e_REQUEST_URL);
-}
 
 if (isset($_POST['semantic-default']))
 {
