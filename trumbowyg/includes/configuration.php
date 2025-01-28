@@ -205,12 +205,8 @@
 			$settings['imageWidthModalEdit'] =	(bool) $pluginPrefs['trumbo_imagewidthmodaledit'];
 			$settings['urlProtocol'] =	(bool) $pluginPrefs['trumbo_urlprotocol'];
 
-			/* set buttons */
-			$btns = self::buttonPane();
-			$settings['btns'] = $btns;
-
+			/* allowed tags */
 			$settings['removeformatPasted'] = $pluginPrefs['allowtagsfrompaste'];
-
 
 			$tagsToRemove = $pluginPrefs['tagsToRemove'];
 			$settings['tagsToRemove'] = explode(',', $tagsToRemove);
@@ -218,16 +214,12 @@
 			$tagsToKeep = $pluginPrefs['tagsToKeep'];
 			$settings['tagsToKeep'] = explode(',', $tagsToKeep);
 
-			$a = (bool) $pluginPrefs['plugin_allowtagsfrompaste'];
-			if ($a)
-			{
-				$allowedtags =  $pluginPrefs['allowtagsfrompaste'];
-				$settings['plugins']['allowTagsFromPaste']['allowedTags'] = explode(',', $allowedtags);
-				unset($settings['tagsToKeep']);
-				unset($settings['tagsToRemove']);
-			}
 
+			/* set buttons */
+			$btns = self::buttonPane();
+			$settings['btns'] = $btns;
 
+ 
 			/* set plugins */
 			$plugins = self::$availablePlugins;
 			$config = e107::getTemplate('trumbowyg', 'plugins', NULL, 'front', false);
@@ -246,6 +238,16 @@
 					}
 				}
 			}
+
+			$a = (bool) $pluginPrefs['plugin_allowtagsfrompaste'];
+			if ($a)
+			{
+				$allowedtags =  $pluginPrefs['allowtagsfrompaste'];
+				$settings['plugins']['allowTagsFromPaste']['allowedTags'] = explode(',', $allowedtags);
+				unset($settings['tagsToKeep']);
+				unset($settings['tagsToRemove']);
+			}
+
 
 			/* set advanced code for plugins */
 			$c = (bool) $pluginPrefs['plugin_colors'];
