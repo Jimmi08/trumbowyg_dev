@@ -67,13 +67,7 @@ class plugin_trumbowyg_prefs extends e_admin_dispatcher
 			'caption' => LAN_TRUMBOWYG_ADMIN_NAV_04,
 			'perm'    => 'P',
 		),
-
-
-		'tagClasses' => array(
-			'caption' => LAN_TRUMBOWYG_TAG_CLASSES,
-			'perm'    => 'P',
-		),
-
+ 
 		'tags/prefs' => array(
 			'caption' => LAN_TRUMBOWYG_ADMIN_NAV_03,
 			'perm'    => 'P',
@@ -112,8 +106,8 @@ class trumbowyg_admin_ui extends e_admin_ui
 		'trumbo_urlprotocol'         => array('title' => LAN_TRUMBOWYG_URL_PROTOCOL, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_URL_PROTOCOL_HELP),
 		'trumbo_linktargets'         => array('title' => LAN_TRUMBOWYG_LINK_TARGETS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_LINK_TARGETS_HELP),
 		'trumbo_minimallinks'        => array('title' => LAN_TRUMBOWYG_MINIMAL_LINKS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_MINIMAL_LINKS_HELP),
-
-
+		'trumbo_tagclasses'        => array('title' =>LAN_TRUMBOWYG_TAG_CLASSES, 'type' => 'boolean', 'data' => 'int', 'help' =>  LAN_TRUMBOWYG_TAG_CLASSES_HELP),
+		
 	);
 
 	public function renderHelp()
@@ -138,11 +132,10 @@ class trumbowyg_admin_ui extends e_admin_ui
 			"<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_MINIMAL_LINKS . "</b><br>" . LAN_TRUMBOWYG_MINIMAL_LINKS_HELP .
 			"<br><hr>";
+		$text .= "<b>" . LAN_TRUMBOWYG_TAG_CLASSES . "</b><br>" . LAN_TRUMBOWYG_TAG_CLASSES_HELP;
+			"<br><hr>";
 		// $text .= "<b>" . LAN_TRUMBOWYG_TAGS_TO_REMOVE . "</b><br>" . LAN_TRUMBOWYG_TAGS_TO_REMOVE_HELP . "<br>";
 		// $text .= "<b>" . LAN_TRUMBOWYG_TAGS_TO_KEEP . "</b><br>" . LAN_TRUMBOWYG_TAGS_TO_KEEP_HELP . "<br>";
-
-
-
 
 		return array('caption' => $caption, 'text' => $text);
 	}
@@ -217,38 +210,7 @@ class trumbowyg_plugins_ui extends e_admin_ui
 	}
 }
 
-
-
-class trumbowyg_tagclasses_ui extends trumbowyg_admin_ui
-{
-	protected $prefs = array(
-
-		'tagClasses'                => array(
-			'type' => 'method',
-			'data' => 'json',
-			'tab' => 0,
-			'width' => 'auto',
-			'help' => '',
-			'readParms' =>  array(),
-			'writeParms' =>  array('nolabel' => 1),
-			'class' => 'left',
-			'thclass' => 'left',
-			'filter' => false,
-			'batch' => false,
-		),
-
-	);
-
-	public function renderHelp()
-	{
-		$caption = LAN_HELP;
-		$text = '';
-		$text .= "<b>" . LAN_TRUMBOWYG_TAG_CLASSES . "</b><br>" . LAN_TRUMBOWYG_TAG_CLASSES_HELP;
-
-		return array('caption' => $caption, 'text' => $text);
-	}
-}
-
+ 
 
 class trumbowyg_tags_ui extends trumbowyg_admin_ui
 {
@@ -287,119 +249,5 @@ class trumbowyg_tags_ui extends trumbowyg_admin_ui
 class trumbowyg_admin_form_ui extends e_admin_form_ui
 {
 
-	function tagClasses($curVal, $mode)
-	{
-		$text =  "";
-
-
-		$semantic =  plugin_trumbowyg_configuration::getDefaultPrefs('tagClasses');
-
-
-
-		$text .= "<div class='e-container'>";
-		$text .= "<table class='table table-striped table-bordered' style='margin-bottom:40px'>
-            <colgroup>
-                <col style='min-width:150px' />
-                <col style='min-width:150px' />
-                <col style='width:auto' />
-            </colgroup>";
-
-		$text .= "<tr>
-            <th>HTML Tag </th>
-            <th>Add classdx  to tag)</th>
-          
-          </tr>";
-
-		foreach ($semantic as $key => $sc)
-		{
-			$field = array('type' => 'text', 'writeParms' =>  ['size' => 'small']);
-
-			$actual_value = isset($curVal) ? $curVal[$key] : '';
-
-			$text .= "<tr>";
-			// Key is readonly
-			$text .= "<td> " . $key . "</td>";
-			$text .= "<td>";
-			$text .= $this->renderElement('tagClasses[' . $key . ']', $actual_value, $field);
-
-			$text .= "<td>";
-
-			//     <button type='button' class='btn btn-danger btn-sm remove-row'>Remove</button>
-			//   </td>";
-			$text .= "</tr>";
-		}
-
-		// Add Row Button
-		$text .= "<tr>
-                <td colspan='3'>
-				<input type='submit' class='btn btn-primary btn-sm' name='tagClasses-reset' value='Reset classses'/>
-            </td>       
-          </tr>";
-
-
-
-		$text .= "</table>";
-		$text .= "</div>";
-		return $text;
-	}
-
-	function semantic($curVal, $mode)
-	{
-		$text =  "";
-
-		$available  =  e107::pref('trumbowyg', 'trumbowyg_semantic');  //reverse
-		if ($available)
-		{
-			$text = e107::getMessage()->addWarning(LAN_TRUMBOWYG_ADMIN_02)->render();
-		}
-		$semantic =  plugin_trumbowyg_configuration::getDefaultPrefs('semantic');
-
-
-
-		$text .= "<div class='e-container'>";
-		$text .= "<table class='table table-striped table-bordered' style='margin-bottom:40px'>
-            <colgroup>
-                <col style='min-width:150px' />
-                <col style='min-width:150px' />
-                <col style='width:auto' />
-            </colgroup>";
-
-		$text .= "<tr>
-            <th>HTML Tag (Key)</th>
-            <th>Replacement Tag (Value)</th>
-          
-          </tr>";
-
-		foreach ($semantic as $key => $sc)
-		{
-			$field = array('type' => 'text', 'writeParms' =>  ['size' => 'small']);
-
-			$actual_value = isset($curVal) ? $curVal[$key] : '';
-
-			$text .= "<tr>";
-			// Key is readonly
-			$text .= "<td> " . $key . "</td>";
-			$text .= "<td>";
-			$text .= $this->renderElement('semantic[' . $key . ']', $actual_value, $field);
-
-			$text .= "<td>";
-
-			//     <button type='button' class='btn btn-danger btn-sm remove-row'>Remove</button>
-			//   </td>";
-			$text .= "</tr>";
-		}
-
-		// Add Row Button
-		$text .= "<tr>
-                <td colspan='3'>
-				<input type='submit' class='btn btn-primary btn-sm' name='semantic-default' value='Set Defaults'/>
-            </td>       
-          </tr>";
-
-
-
-		$text .= "</table>";
-		$text .= "</div>";
-		return $text;
-	}
+ 
 }

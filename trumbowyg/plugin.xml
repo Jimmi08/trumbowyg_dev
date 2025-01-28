@@ -25,12 +25,12 @@
         <pref name="trumbo_imagewidthmodaledit">0</pref>
         <pref name="trumbo_urlprotocol">0</pref>
 		<pref name="trumbo_minimallinks'">0</pref>
-        
+        <pref name="trumbo_tagclasses"></pref>
         <pref name="removeformatpasted">0</pref>
  		<pref name="tagsToRemove"></pref>
         <pref name="tagsToKeep">hr,img,embed,iframe,input</pref>
         <pref name="allowtagsfrompaste">b,em,i,strong</pref>
-        <pref name="tagClasses"></pref>
+
       
 	</pluginPrefs>
  

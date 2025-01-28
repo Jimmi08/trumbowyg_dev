@@ -19,42 +19,6 @@
 		);
 
 
-		private static 	$tagClasses = array(
-			"h1" => "",
-			"h2" => "",
-			"h3" => "",
-			"h4" => "",
-			"h5" => "",
-			"h6" => "",
-			"p" => "",
-			"b" => "",
-			"strong" => "",
-			"i" => "",
-			"em" => "",
-			"u" => "",
-			"s" => "",
-			"ul" => "",
-			"ol" => "",
-			"li" => "",
-			"blockquote" => "",
-			"pre" => "",
-			"code" => "",
-			"table" => "",
-			"thead" => "",
-			"tbody" => "",
-			"tr" => "",
-			"th" => "",
-			"td" => "",
-			"img" => "",
-			"figure" => "",
-			"figcaption" => "",
-			"a" => "",
-			"div" => "",
-			"span" => "",
-			"br" => "",
-			"hr" => ""
-		);
-
 		private static $defaults = [];
 		private static $availablePlugins = [];
 		private static $availableLangs = [];
@@ -130,47 +94,8 @@
 
 			return self::$availablePlugins;
 		}
-
-		public static function getDefaultPrefs($key = null)
-		{
-
-			// Merge the flattened buttons array into the defaults
-
-			self::$defaults['semantic'] = self::$semantic;
-			self::$defaults['tagClasses'] = self::$tagClasses;
-
-			// If a key is provided, return the specific subarray
-			if (
-				$key !== null && array_key_exists($key, self::$defaults)
-			)
-			{
-				return self::$defaults[$key];
-			}
-
-			return self::$defaults;
-		}
-
-
-		// Static method to handle button grouping
-		public static function semantic()
-		{
-			$curVal = e107::pref('trumbowyg', 'semantic');
-			$tmp = e107::unserialize($curVal);
-			return $tmp;
-		}
-
-		public static function tagClasses()
-		{
-			$curVal = e107::pref('trumbowyg', 'tagClasses');
-			$array = e107::unserialize($curVal);
-			$array = array_filter($array, function ($value)
-			{
-				return $value !== ''; // Keep only keys with non-empty values
-			});
-
-			return $array;
-		}
-
+ 
+ 
 		// Static method to handle button grouping
 		public static function buttonPane()
 		{
@@ -250,7 +175,6 @@
 			}
 			$settings['lang'] = $lang;
 
-
 			/* set options - load from template if possible, override with plugin prefs */
 			/* trumbowyg_semantic */
 
@@ -262,12 +186,16 @@
 
 			//semantic reverse
 			$s = (bool) e107::pref('trumbowyg', 'trumbowyg_semantic');
-			if (!$s) $settings['semantic'] = $settings['semantic'];
+			if (!$s) $settings['semantic'] = $options['semantic'];
 			else unset($settings['semantic']);
 
 			$t = (bool) e107::pref('trumbowyg', 'trumbowyg_linktargets');
-			if ($t) $settings['linktargets'] = $settings['linktargets'];
-			else unset($settings['linktargets']);
+			if ($t) $settings['linkTargets'] = $options['linktargets'];
+			else unset($settings['linkTargets']);
+
+			$t = (bool) e107::pref('trumbowyg', 'trumbowyg_tagclasses');
+			if ($t) $settings['tagClasses'] = $options['tagclasses'];
+			else unset($settings['tagClasses']);
 
 			$settings['minimalLinks'] =	(bool) $pluginPrefs['trumbowyg_minimallinks'];
 			$settings['changeActiveDropdownIcon']  =  (bool) $pluginPrefs['trumbo_changeactivedropdownicon'];
@@ -277,16 +205,13 @@
 			$settings['imageWidthModalEdit'] =	(bool) $pluginPrefs['trumbo_imagewidthmodaledit'];
 			$settings['urlProtocol'] =	(bool) $pluginPrefs['trumbo_urlprotocol'];
 
-
 			/* set buttons */
 			$btns = self::buttonPane();
 			$settings['btns'] = $btns;
 
-			$tagClasses = self::tagClasses();
-
 			$settings['removeformatPasted'] = $pluginPrefs['allowtagsfrompaste'];
 
-			$settings['tagClasses'] = $tagClasses;
+
 			$tagsToRemove = $pluginPrefs['tagsToRemove'];
 			$settings['tagsToRemove'] = explode(',', $tagsToRemove);
 
