@@ -16,20 +16,22 @@
 	<pluginPrefs>
         <pref name="enableEditor"></pref>
         <pref name="darkMode"></pref>
- 		<pref name="trumbowyg_semantic">1</pref>
-        <pref name="trumbowyg_removeformatPasted">0</pref>
-        <pref name="resetCss">0</pref>
-        <pref name="autogrow">0</pref>
-        <pref name="imageWidthModalEdit">0</pref>
-        <pref name="urlProtocol">0</pref>
-        <pref name="linkTargets">0</pref>
-		<pref name="minimalLinks'">0</pref>
+ 		<pref name="trumbo_semantic">1</pref>
+        <pref name="trumbo_linktargets">0</pref>
+        <pref name="trumbo_hidebuttontexts">0</pref>
+        <pref name="trumbo_changeactivedropdownicon">0</pref>
+        <pref name="trumbo_resetcss">0</pref>
+        <pref name="trumbo_autogrow">0</pref>
+        <pref name="trumbo_imagewidthmodaledit">0</pref>
+        <pref name="trumbo_urlprotocol">0</pref>
+		<pref name="trumbo_minimallinks'">0</pref>
+        
         <pref name="removeformatpasted">0</pref>
  		<pref name="tagsToRemove"></pref>
         <pref name="tagsToKeep">hr,img,embed,iframe,input</pref>
         <pref name="allowtagsfrompaste">b,em,i,strong</pref>
         <pref name="tagClasses"></pref>
-        <pref name="semantic"></pref>
+      
 	</pluginPrefs>
  
 </e107Plugin>

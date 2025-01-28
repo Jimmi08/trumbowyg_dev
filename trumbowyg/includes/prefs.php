@@ -29,7 +29,7 @@ class plugin_trumbowyg_prefs extends e_admin_dispatcher
 			'ui'         => 'trumbowyg_admin_form_ui',
 			'uipath'     => null
 		),
- 
+
 		'semantic' => array(
 			'controller' => 'trumbowyg_semantic_ui',
 			'path'       => null,
@@ -67,11 +67,7 @@ class plugin_trumbowyg_prefs extends e_admin_dispatcher
 			'caption' => LAN_TRUMBOWYG_ADMIN_NAV_04,
 			'perm'    => 'P',
 		),
- 
-		'semantic/prefs' => array(
-			'caption' => LAN_TRUMBOWYG_ADMIN_NAV_02,
-			'perm'    => 'P',
-		),
+
 
 		'tagClasses' => array(
 			'caption' => LAN_TRUMBOWYG_TAG_CLASSES,
@@ -99,7 +95,7 @@ class trumbowyg_admin_ui extends e_admin_ui
 	protected $pluginTitle = LAN_PLUGIN_TRUMBOWYG_NAME;
 	protected $pluginName = "trumbowyg";
 
- 
+
 	/**
 	 * @var array
 	 */
@@ -107,16 +103,17 @@ class trumbowyg_admin_ui extends e_admin_ui
 	protected $prefs = array(
 		'enableEditor'  		=> array('title' => LAN_TRUMBOWYG_ADMIN_04, 'type' => 'boolean', 'data' => 'int', 'help' => ""),
 		'darkMode' 			=> array('title' => LAN_TRUMBOWYG_ADMIN_06, 'type' => 'boolean', 'data' => 'int', 'help' => ""),
- 		'changeActiveDropdownIcon' => array('title' => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP),
-		'hideButtonTexts' => array('title' => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP),
-		'trumbowyg_semantic'            => array('title' => LAN_TRUMBOWYG_SEMANTIC, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_SEMANTIC_HELP),
-		'trumbowyg_removeformatPasted'  => array('title' => LAN_TRUMBOWYG_REMOVEFORMAT_PASTED, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_REMOVEFORMAT_PASTED_HELP),
-		'resetCss'            => array('title' => LAN_TRUMBOWYG_RESET_CSS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_RESET_CSS_HELP),
-		'autogrow'            => array('title' => LAN_TRUMBOWYG_AUTOGROW, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_AUTOGROW_HELP),
-		'imageWidthModalEdit' => array('title' => LAN_TRUMBOWYG_IMAGE_WIDTH_MODAL_EDIT, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_IMAGE_WIDTH_MODAL_EDIT_HELP),
-		'urlProtocol'         => array('title' => LAN_TRUMBOWYG_URL_PROTOCOL, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_URL_PROTOCOL_HELP),
-		'linkTargets'         => array('title' => LAN_TRUMBOWYG_LINK_TARGETS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_LINK_TARGETS_HELP),
-		'minimalLinks'        => array('title' => LAN_TRUMBOWYG_MINIMAL_LINKS, 'type' => 'boolean', 'data' => 'int', 'help' =>LAN_TRUMBOWYG_MINIMAL_LINKS_HELP) 
+		'trumbo_changeactivedropdownicon' => array('title' => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP),
+		'trumbo_hidebuttontexts' => array('title' => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS, 'type'  => 'boolean', 'data'  => 'int', 'help'  => LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP),
+		'trumbo_semantic'            => array('title' => LAN_TRUMBOWYG_SEMANTIC, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_SEMANTIC_HELP),
+		'trumbo_resetcss'            => array('title' => LAN_TRUMBOWYG_RESET_CSS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_RESET_CSS_HELP),
+		'trumbo_autogrow'            => array('title' => LAN_TRUMBOWYG_AUTOGROW, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_AUTOGROW_HELP),
+		'trumbo_imagewidthmodaledit' => array('title' => LAN_TRUMBOWYG_IMAGE_WIDTH_MODAL_EDIT, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_IMAGE_WIDTH_MODAL_EDIT_HELP),
+		'trumbo_urlprotocol'         => array('title' => LAN_TRUMBOWYG_URL_PROTOCOL, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_URL_PROTOCOL_HELP),
+		'trumbo_linktargets'         => array('title' => LAN_TRUMBOWYG_LINK_TARGETS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_LINK_TARGETS_HELP),
+		'trumbo_minimallinks'        => array('title' => LAN_TRUMBOWYG_MINIMAL_LINKS, 'type' => 'boolean', 'data' => 'int', 'help' => LAN_TRUMBOWYG_MINIMAL_LINKS_HELP),
+
+
 	);
 
 	public function renderHelp()
@@ -124,7 +121,7 @@ class trumbowyg_admin_ui extends e_admin_ui
 		$caption = LAN_HELP;
 		$text = '';
 		$text .= "<b>" . LAN_TRUMBOWYG_ADMIN_04 . "</b><br>" . LAN_TRUMBOWYG_ADMIN_04_HELP . "<br><hr>";
- 		$text .= "<b>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON . "</b><br>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP . "<br><hr>";
+		$text .= "<b>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON . "</b><br>" . LAN_TRUMBOWYG_CHANGE_ACTIVE_DROPDOWN_ICON_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS . "</b><br>" . LAN_TRUMBOWYG_HIDE_BUTTON_TEXTS_HELP . "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_SEMANTIC . "</b><br>" . LAN_TRUMBOWYG_SEMANTIC_HELP . "<br>" . LAN_TRUMBOWYG_SEMANTIC_HELP2
 			. "<br><hr>";
@@ -165,12 +162,12 @@ class trumbowyg_plugins_ui extends e_admin_ui
 	protected $pluginTitle = LAN_PLUGIN_TRUMBOWYG_NAME;
 	protected $pluginName = "trumbowyg";
 
-	protected $preftabs				= array(0 =>  'Available plugins' );
+	protected $preftabs				= array(0 =>  'Available plugins');
 	/**
 	 * @var array
 	 */
- 
- 
+
+
 
 	public function renderHelp()
 	{
@@ -186,8 +183,8 @@ class trumbowyg_plugins_ui extends e_admin_ui
 			$text .= "<b>" . constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin)) . "</b><br>";
 			$text .= constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP') . "<br><hr>";
 		}
- 
- 
+
+
 		return array('caption' => $caption, 'text' => $text);
 	}
 
@@ -216,47 +213,11 @@ class trumbowyg_plugins_ui extends e_admin_ui
 			);
 		}
 
-		$this->prefs = $prefs; 
-
-	}
-
-
-
-}
-
- 
-
-class trumbowyg_semantic_ui extends trumbowyg_admin_ui
-{
-	protected $prefs = array(
-
-		'semantic'                => array(
-
-			'type' => 'method',
-			'data' => 'json',
-			'tab' => 0,
-
-			'width' => 'auto',
-			'help' => '',
-			'readParms' =>  array(),
-			'writeParms' =>  array('nolabel' => 1),
-			'class' => 'left',
-			'thclass' => 'left',
-			'filter' => false,
-			'batch' => false,
-		),
-
-	);
-
-	public function renderHelp()
-	{
-		$caption = LAN_HELP;
-		$text = '';
-		$text .= "<b>" . LAN_TRUMBOWYG_SEMANTIC . "</b><br>" . LAN_TRUMBOWYG_SEMANTIC_HELP . "<br>" . LAN_TRUMBOWYG_SEMANTIC_HELP2;
-
-		return array('caption' => $caption, 'text' => $text);
+		$this->prefs = $prefs;
 	}
 }
+
+
 
 class trumbowyg_tagclasses_ui extends trumbowyg_admin_ui
 {
@@ -293,10 +254,10 @@ class trumbowyg_tags_ui extends trumbowyg_admin_ui
 {
 	protected $prefs = array(
 
-		'removeformatpasted' => array('title' => LAN_TRUMBOWYG_REMOVEFORMATPASTED, 'type' => 'boolean', 'data' => 'int', 'tab' => 0),
+		'removeformatpasted' => array('title' => LAN_TRUMBOWYG_REMOVEFORMAT_PASTED, 'type' => 'boolean', 'data' => 'int', 'tab' => 0),
 		'tagsToRemove'  => array('title' => LAN_TRUMBOWYG_TAGS_TO_REMOVE, 'type' => 'tags', 'data' => 'str', 'tab' => 0),
 		'tagsToKeep'    => array('title' => LAN_TRUMBOWYG_TAGS_TO_KEEP, 'type' => 'tags', 'data' => 'str', 'tab' => 0),
-	 
+
 		'allowtagsfrompaste'   => array('title' => LAN_TRUMBOWYG_ALLOWED_TAGS, 'type' => 'tags', 'data' => 'str', 'tab' => 0)
 	);
 
@@ -305,15 +266,15 @@ class trumbowyg_tags_ui extends trumbowyg_admin_ui
 	{
 		$caption = LAN_HELP;
 		$text = '';
-		$text .= "<b>" . LAN_TRUMBOWYG_REMOVEFORMATPASTED . "</b><br>" . LAN_TRUMBOWYG_REMOVEFORMATPASTED_HELP;
+		$text .= "<b>" . LAN_TRUMBOWYG_REMOVEFORMAT_PASTED . "</b><br>" . LAN_TRUMBOWYG_REMOVEFORMAT_PASTED_HELP;
 		$text .= "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_TAGS_TO_REMOVE . "</b><br>" . LAN_TRUMBOWYG_TAGS_TO_REMOVE_HELP;
 		$text .= "<br><hr>";
 		$text .= "<b>" . LAN_TRUMBOWYG_TAGS_TO_KEEP . "</b><br>" . LAN_TRUMBOWYG_TAGS_TO_KEEP_HELP;
- 
+
 		$text .= "<br>";
 		$text .= "<b>" . LAN_TRUMBOWYG_ALLOWED_TAGS . "</b><br>" . LAN_TRUMBOWYG_ALLOWED_TAGS_HELP;
- 
+
 		$text .= "<br>";
 		return array('caption' => $caption, 'text' => $text);
 	}
@@ -442,5 +403,3 @@ class trumbowyg_admin_form_ui extends e_admin_form_ui
 		return $text;
 	}
 }
-
- 

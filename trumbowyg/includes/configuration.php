@@ -67,7 +67,7 @@
 			$pluginsDir = e_PLUGIN . "trumbowyg/dist/plugins/";
 
 			// List of plugins to skip
-			$skippedPlugins = ['mention', 'giphy','mathml', 'upload'];
+			$skippedPlugins = ['mention', 'giphy', 'mathml', 'upload'];
 
 			// Get all files and directories in the 'plugins' directory
 			$allFiles = scandir($pluginsDir);
@@ -108,11 +108,11 @@
 					$languages[$matches[1]] = $matches[1]; // Add key-value pair
 				}
 			}
-  
+
 			$el = e107::getLanguage()->getList();
-	
+
 			$tl = array_intersect_key($languages, $el);
- 	 
+
 			self::$availableLangs = $tl;
 		}
 
@@ -122,7 +122,7 @@
 		{
 			return self::$availableLangs;
 		}
-		 
+
 
 
 		public static function getAvailablePlugins($key = null)
@@ -236,10 +236,10 @@
 		{
 			$pluginPrefs  = e107::pref('trumbowyg');
 
+			/* set language */
 			$el = self::getLangs();
- 
-			$lang = CORE_LC;
 
+			$lang = CORE_LC;
 
 			// Merge into defaults
 			$settings = self::$defaults;
@@ -249,45 +249,42 @@
 				$lang = "en";
 			}
 			$settings['lang'] = $lang;
- 
-			//buttons
-			$b = (bool) $pluginPrefs['trumbowyg_btns'];
-			if ($b)
-			{  //override only in this case
-				$btns = self::buttonPane();
-				$settings['btns'] = $btns;
+
+
+			/* set options - load from template if possible, override with plugin prefs */
+			/* trumbowyg_semantic */
+
+			$options = e107::getTemplate('trumbowyg', 'options', NULL, 'front', false);
+			foreach ($options as $key => $plugin)
+			{
+				$settings[$key] = $plugin;
 			}
-			else unset($settings['btns']);
 
 			//semantic reverse
 			$s = (bool) e107::pref('trumbowyg', 'trumbowyg_semantic');
+			if (!$s) $settings['semantic'] = $settings['semantic'];
+			else unset($settings['semantic']);
 
-			if (!$s)
-			{   //override only in this case
-				$semantic = self::semantic();
-				$settings['semantic'] = $semantic;
-			}
+			$t = (bool) e107::pref('trumbowyg', 'trumbowyg_linktargets');
+			if ($t) $settings['linktargets'] = $settings['linktargets'];
+			else unset($settings['linktargets']);
+
+			$settings['minimalLinks'] =	(bool) $pluginPrefs['trumbowyg_minimallinks'];
+			$settings['changeActiveDropdownIcon']  =  (bool) $pluginPrefs['trumbo_changeactivedropdownicon'];
+			$settings['hideButtonTexts'] =	(bool) $pluginPrefs['trumbo_hidebuttontexts'];
+			$settings['resetcss'] =	(bool) $pluginPrefs['trumbo_resetcss'];
+			$settings['autogrow'] =	(bool) $pluginPrefs['trumbo_autogrow'];
+			$settings['imageWidthModalEdit'] =	(bool) $pluginPrefs['trumbo_imagewidthmodaledit'];
+			$settings['urlProtocol'] =	(bool) $pluginPrefs['trumbo_urlprotocol'];
 
 
-			$t = (bool) $pluginPrefs['linkTargets'];
-			if ($t)
-			{  //override only in this case
-				$settings['linkTargets'] = ['_blank', '_self'];
-			}
-
+			/* set buttons */
+			$btns = self::buttonPane();
+			$settings['btns'] = $btns;
 
 			$tagClasses = self::tagClasses();
 
-			$settings['changeActiveDropdownIcon']  =  (bool) $pluginPrefs['changeActiveDropdownIcon'];
-			$settings['hideButtonTexts'] =	(bool) $pluginPrefs['hideButtonTexts'];
-			$settings['resetcss'] =	(bool) $pluginPrefs['resetcss'];
 			$settings['removeformatPasted'] = $pluginPrefs['allowtagsfrompaste'];
-			$settings['autogrow'] =	(bool) $pluginPrefs['autogrow'];
-			$settings['imageWidthModalEdit'] =	(bool) $pluginPrefs['imageWidthModalEdit'];
-			$settings['urlProtocol'] =	(bool) $pluginPrefs['urlProtocol'];
-			$settings['minimalLinks'] =	(bool) $pluginPrefs['minimalLinks'];
-
-
 
 			$settings['tagClasses'] = $tagClasses;
 			$tagsToRemove = $pluginPrefs['tagsToRemove'];
@@ -295,29 +292,6 @@
 
 			$tagsToKeep = $pluginPrefs['tagsToKeep'];
 			$settings['tagsToKeep'] = explode(',', $tagsToKeep);
-
-
-			$plugins = self::$availablePlugins;
-
-			$config = e107::getTemplate('trumbowyg', 'plugins', NULL, 'front', false);
-
-			// Loop through plugins to dynamically include scripts
-			foreach ($plugins as $plugin)
-			{
-
-				$prefKey = "plugin_{$plugin}"; // Generate the preference key
-				if (!empty($pluginPrefs[$prefKey]))
-				{
-
-
-					if (!empty($config[$plugin]))
-					{
-						$pluginkey  = $plugin;
-						if ($plugin == "template") $pluginkey = "templates";
-						$settings['plugins'][$pluginkey] = $config[$plugin];
-					}
-				}
-			}
 
 			$a = (bool) $pluginPrefs['plugin_allowtagsfrompaste'];
 			if ($a)
@@ -328,11 +302,30 @@
 				unset($settings['tagsToRemove']);
 			}
 
-			$c = (bool) $pluginPrefs['plugin_colors'];
 
+			/* set plugins */
+			$plugins = self::$availablePlugins;
+			$config = e107::getTemplate('trumbowyg', 'plugins', NULL, 'front', false);
+
+			// Loop through plugins to dynamically include scripts
+			foreach ($plugins as $plugin)
+			{
+				$prefKey = "plugin_{$plugin}"; // Generate the preference key
+				if (!empty($pluginPrefs[$prefKey]))
+				{
+					if (!empty($config[$plugin]))
+					{
+						$pluginkey  = $plugin;
+						if ($plugin == "template") $pluginkey = "templates";
+						$settings['plugins'][$pluginkey] = $config[$plugin];
+					}
+				}
+			}
+
+			/* set advanced code for plugins */
+			$c = (bool) $pluginPrefs['plugin_colors'];
 			if ($c)
 			{
-
 				if (!empty($config['colorLabels']))
 				{
 					$colorlabels = $config['colorLabels'];
