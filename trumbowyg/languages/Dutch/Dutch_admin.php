@@ -130,9 +130,6 @@ define("LAN_TRUMBOWYG_PLUGIN_TEMPLATE_HELP", "Met deze plugin kan je een templat
 define("LAN_TRUMBOWYG_PLUGIN_UPLOAD", "");
 define("LAN_TRUMBOWYG_PLUGIN_UPLOAD_HELP", "");
 
-define("LAN_TRUMBOWYG_REMOVEFORMATPASTED", "Opmaak verwijderen bij plakken");
-define("LAN_TRUMBOWYG_REMOVEFORMATPASTED_HELP", "Verwijdert automatisch opmaak wanneer inhoud in de editor wordt geplakt.");
-
 define("LAN_TRUMBOWYG_REMOVEFORMAT_PASTED", "Opmaak verwijderen bij plakken");
 define("LAN_TRUMBOWYG_REMOVEFORMAT_PASTED_HELP", "Wanneer ingeschakeld, wordt de opmaak van geplakte content verwijderd. Je kan dit overschrijven met Tags om te verwijderen of Tags om te behouden.");
 
