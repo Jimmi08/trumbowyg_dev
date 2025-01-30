@@ -137,12 +137,12 @@ if ($enableOn)
 		// Convert JSON to a JavaScript-like object
 		$javascriptSettings = preg_replace('/"([^"]+)":/', '$1:', $jsonSettings);
 
+		$trumbowygScript = <<<JS
+			$('.e-wysiwyg').trumbowyg($javascriptSettings);
+		JS;
 
 		// Inject JavaScript
-		e107::js('footer-inline', "
-				$('.e-wysiwyg').trumbowyg($javascriptSettings);
-				", 'jquery', 1);
-
+		e107::js('footer-inline',$trumbowygScript, 'jquery', 5);
 
 		if ($darkmode)
 		{
@@ -161,7 +161,7 @@ if ($enableOn)
 				 
 			}";
 
-			e107::js('footer-inline', $darkmodeCode, 'jquery', 1);
+			e107::js('footer-inline', $darkmodeCode, 'jquery', 5);
 		}
 	}
 }
