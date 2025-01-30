@@ -51,3 +51,6 @@ $PLUGINS_TEMPLATE['highlight']['languageNames'] = [
 	'ssml' => 'SSML',
 	'css' => 'CSS'
 ];
+
+
+$PLUGINS_TEMPLATE['e107mm']['baseURL'] = e_ADMIN_ABS;

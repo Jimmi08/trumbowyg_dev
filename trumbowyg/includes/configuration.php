@@ -107,7 +107,7 @@
 			{
 				$bt = $buttonpane[e_TRUMBOWYG_TEMPLATE];
 			}
-
+		 
 			if (USER)
 			{
 				$level = "member";
@@ -130,7 +130,7 @@
 				}
 			}
 			$bl =  $buttonpane[$level];
-
+ ;
 			if (is_null($bt))
 			{
 				$btns = $bl;
@@ -219,26 +219,28 @@
 			$btns = self::buttonPane();
 			$settings['btns'] = $btns;
 
- 
 			/* set plugins */
 			$plugins = self::$availablePlugins;
 			$config = e107::getTemplate('trumbowyg', 'plugins', NULL, 'front', false);
-
+	 
 			// Loop through plugins to dynamically include scripts
 			foreach ($plugins as $plugin)
-			{
+			{ 
 				$prefKey = "plugin_{$plugin}"; // Generate the preference key
 				if (!empty($pluginPrefs[$prefKey]))
 				{
+		
 					if (!empty($config[$plugin]))
 					{
 						$pluginkey  = $plugin;
 						if ($plugin == "template") $pluginkey = "templates";
 						$settings['plugins'][$pluginkey] = $config[$plugin];
 					}
+					else $settings['plugins'][$plugin] = array();
+
 				}
 			}
-
+ 
 			$a = (bool) $pluginPrefs['plugin_allowtagsfrompaste'];
 			if ($a)
 			{

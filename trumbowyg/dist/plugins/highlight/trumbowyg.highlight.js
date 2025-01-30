@@ -211,7 +211,7 @@
             // Generate a list of options
             return '<option value="' + escapeHtml(language.id) + '">' + escapeHtml(language.name) + '</option>';
         }).join('');
-
+        console.log(prismLanguageKeys);
         return options;
     }
 
