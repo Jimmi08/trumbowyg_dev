@@ -27,18 +27,7 @@ if ($enableOn)
 	{
 
 		new plugin_trumbowyg_configuration;
-
-		$el = plugin_trumbowyg_configuration::getLangs();
-
-		$lang = CORE_LC;
-		if (!isset($el[$lang]))
-		{
-			$lang = "en";
-		}
-
-		e107::js("footer", e_PLUGIN . "trumbowyg/dist/langs/{$lang}{$min}.js", "jquery", 1);
-
-
+		
 		if ($pluginPrefs['plugin_highlight'])
 		{
 
@@ -82,6 +71,16 @@ if ($enableOn)
 		e107::css("trumbowyg",  "dist/ui/trumbowyg{$min}.css");
 
 		e107::js("footer", e_PLUGIN . "trumbowyg/dist/trumbowyg{$min}.js", "jquery", 1);
+
+		$el = plugin_trumbowyg_configuration::getLangs();
+
+		$lang = CORE_LC;
+		if (!isset($el[$lang]))
+		{
+			$lang = "en";
+		}
+
+		e107::js("footer", e_PLUGIN . "trumbowyg/dist/langs/{$lang}{$min}.js", "jquery", 1);
 
 		$cssPlugins = ['colors', 'table', 'highlight'];
 
