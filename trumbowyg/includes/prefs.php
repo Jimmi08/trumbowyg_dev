@@ -172,9 +172,18 @@ class trumbowyg_plugins_ui extends e_admin_ui
 		// Loop through each plugin directory and generate help text dynamically
 		foreach ($plugins as $plugin)
 		{
+			$pluginLabel = defined('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin))
+				? constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin))
+				: ucfirst($plugin);
+
 			// Generate help text for each plugin
-			$text .= "<b>" . constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin)) . "</b><br>";
-			$text .= constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP') . "<br><hr>";
+			$text .= "<b>" . $pluginLabel . "</b><br>";
+
+			$helpText = defined('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP')
+			? constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP')
+			: "No help available for {$pluginLabel}.";
+
+			$text .= $helpText . "<br><hr>";
 		}
 
 
@@ -196,12 +205,23 @@ class trumbowyg_plugins_ui extends e_admin_ui
 		{
 			$pluginKey = 'plugin_' . $plugin; // e.g. plugin_fontsize, plugin_fontfamily, etc.
 
+			$pluginLabel = defined('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin))
+				? constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin))
+				: ucfirst($plugin);
+ 
+			$helpText = defined('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP')
+			? constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP')
+			: "";
+
+		 
+
+
 			// Create the preference entry for each plugin
 			$prefs[$pluginKey] = array(
-				'title' => constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin)), // Using LAN_TRUMBOWYG_PLUGIN_<PLUGINNAME>
+				'title' => $pluginLabel, // Using LAN_TRUMBOWYG_PLUGIN_<PLUGINNAME>
 				'type' => 'boolean',
 				'data' => 'int',
-				'help' => constant('LAN_TRUMBOWYG_PLUGIN_' . strtoupper($plugin) . '_HELP'), // Using LAN_TRUMBOWYG_PLUGIN_<PLUGINNAME>_HELP
+				'help' => $helpText, // Using LAN_TRUMBOWYG_PLUGIN_<PLUGINNAME>_HELP
 				'tab' => 0
 			);
 		}
