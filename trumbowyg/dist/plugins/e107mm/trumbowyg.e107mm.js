@@ -11,37 +11,11 @@
 
     // Plugin default options
     var defaultOptions = {
+        data: [],
+        success: undefined,
+        error: undefined
     };
-
-    // If the plugin is a button
-    function buildButtonDef(trumbowyg) {
-        return {
-            fn: function () {
-                // Plugin button logic
-            }
-        }
-    }
-
-    // If the plugin is a button
-    function buildButtonIcon() {
-        if ($("#trumbowyg-e107mm").length > 0) {
-            return;
-        }
-
  
-        const iconWrap = $(document.createElementNS("http://www.w3.org/2000/svg", "svg"));
-        iconWrap.addClass("trumbowyg-icons");
-
-        // For demonstration purposes, we've taken the "File" icon from
-        // Remix Icon - https://remixicon.com/
-        iconWrap.html(`
-            <symbol id="trumbowyg-e107mm" viewBox="0 0 24 24" fill="red">
-                <path d="M17.409 19C16.633 16.6012 15.1323 15.1147 13.1434 13.3979C15.0238 11.8971 17.4071 11 20 11V3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934C2 3.44476 2.45531 3 2.9918 3H6V1H8V5H4V12C9.22015 12 13.6618 14.4616 15.3127 19H17.409ZM18 1V5H10V3H16V1H18ZM16.5 10C15.6716 10 15 9.32843 15 8.5C15 7.67157 15.6716 7 16.5 7C17.3284 7 18 7.67157 18 8.5C18 9.32843 17.3284 10 16.5 10Z"/>
-            </symbol>
-        `).appendTo(document.body);
-    }
-
-
     $.extend(true, $.trumbowyg, {
         // Add some translations
         langs: {
@@ -86,35 +60,33 @@
             width: 800,
             modal: true,
             buttons: {
-                Close: function () {
-                    $(this).dialog('close');
+                Confirm: function () {
+                    const iframeDocument = mediaModal.find('iframe')[0].contentDocument;
+
+                    // Hypothetical example: Look for a selected image in the iframe
+                    const selectedImage = iframeDocument.querySelector('.e-media-select.media-select-active');
+
+                    if (selectedImage) {
+                        const mediaUrl = selectedImage.getAttribute('data-src');
+                        console.log(mediaUrl);
+                        trumbowyg.execCmd('insertHTML', `<img src="${mediaUrl}" alt="Selected Image">`);
+                        mediaModal.dialog('close');
+                    } else {
+                        alert('Please select an image.');
+                    }
                 },
-                 Confirm: function () {
-                    $(this).dialog('confirm');
+                Close: function () {
+                    mediaModal.dialog('close');
                 }
             },
+
             close: function () {
                 mediaModal.remove();
-            },
-            confirm: function () {
-                mediaModal.submit();
             }
         });
 
-        // Listen for messages from the media manager (assuming it sends postMessage)
-        window.addEventListener('message', function handleMediaSelection(event) {
-            if (event.origin !== window.location.origin) return;
-
-            // Assume event.data contains the selected image URL
-            if (event.data && event.data.mediaUrl) {
-                const mediaUrl = event.data.mediaUrl;
-
-                // Insert media URL into the Trumbowyg editor
-                trumbowyg.execCmd('insertImage', mediaUrl);
-
-                mediaModal.dialog('close');
-                window.removeEventListener('message', handleMediaSelection);
-            }
-        });
+ 
+ 
+ 
     }
 })(jQuery);
