@@ -1411,41 +1411,50 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
             t.execCmd('unlink', undefined, undefined, true);
         },
         insertImage: function () {
-            var t = this;
-            t.saveRange();
+    var t = this;
+    t.saveRange();
 
-            var options = {
-                url: {
-                    label: 'URL',
-                    required: true
-                },
-                alt: {
-                    label: t.lang.description,
-                    value: t.getRangeText()
-                }
-            };
-
-            if (t.o.imageWidthModalEdit) {
-                options.width = {};
-            }
-
-            t.openModalInsert(t.lang.insertImage, options, function (v) { // v are values
-                t.execCmd('insertImage', v.url, false, true);
-                var $img = $('img[src="' + v.url + '"]:not([alt])', t.$box);
-                $img.attr('alt', v.alt);
-
-                if (t.o.imageWidthModalEdit) {
-                    $img.attr({
-                        width: v.width
-                    });
-                }
-
-                t.syncCode();
-                t.$c.trigger('tbwchange');
-
-                return true;
-            });
+    var options = {
+        url: {
+            label: 'URL',
+            required: true
         },
+        alt: {
+            label: t.lang.description,
+            value: t.getRangeText()
+        }
+    };
+	function isImage(url) {
+		return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+	}
+	
+    if (t.o.imageWidthModalEdit) {
+        options.width = {};
+    }
+
+    t.openModalInsert(t.lang.insertImage, options, function (v) { // v are values
+        // Check if the URL is an image
+        if (!isImage(v.url)) {
+            alert('The provided URL is not a valid image URL.'); // Alert the user
+            return false; // Stop the execution
+        }
+
+        t.execCmd('insertImage', v.url, false, true);
+        var $img = $('img[src="' + v.url + '"]:not([alt])', t.$box);
+        $img.attr('alt', v.alt);
+
+        if (t.o.imageWidthModalEdit) {
+            $img.attr({
+                width: v.width
+            });
+        }
+
+        t.syncCode();
+        t.$c.trigger('tbwchange');
+
+        return true;
+    });
+},
         fullscreen: function () {
             var t = this,
                 prefix = t.o.prefix,
