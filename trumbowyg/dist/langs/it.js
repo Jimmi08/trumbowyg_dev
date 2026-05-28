@@ -58,5 +58,5 @@ jQuery.trumbowyg.langs.it = {
     removeformat: 'Rimuovi Formattazione',
 
     superscript: 'Apice',
-    subscript: 'Pedice',
+    subscript: 'Pedice'
 };

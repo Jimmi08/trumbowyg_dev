@@ -1,3 +1,14 @@
+/**
+ * Trumbowyg v2.31.0 - A lightweight WYSIWYG editor
+ * Trumbowyg core file
+ * ------------------------
+ * @link https://alex-d.github.io/Trumbowyg/
+ * @license MIT
+ * @author Alexandre Demode (Alex-D)
+ *         Twitter : @AlexandreDemode
+ *         Website : alex-d.fr
+ */
+
 jQuery.trumbowyg = {
     langs: {
         en: {
@@ -198,7 +209,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
     };
 
     // @param: editorElem is the DOM element
-    var Trumbowyg = function (editorElem, options) {
+    var Trumbowyg = function (editorElem, options) { // jshint ignore:line
         var t = this,
             trumbowygIconsId = 'trumbowyg-icons',
             $trumbowyg = $.trumbowyg;
@@ -245,12 +256,16 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                 console.warn('You must define svgPath: https://goo.gl/CfTY9U'); // jshint ignore:line
             } else if (!$trumbowyg.svgAbsoluteUseHref) {
                 var div = t.doc.createElement('div');
+                div.style.width = '0';
+                div.style.height = '0';
+                div.style.overflow = 'hidden';
+                div.style.visibility = 'hidden';
                 div.id = trumbowygIconsId;
                 t.doc.body.insertBefore(div, t.doc.body.childNodes[0]);
                 fetch(svgPathOption, {
                     method: 'GET',
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                     }
                 }).then((response) => {
                     response.text()
@@ -284,7 +299,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
         t.btnsDef = {
             viewHTML: {
                 fn: 'toggle',
-                class: 'trumbowyg-not-disable',
+                class: 'trumbowyg-not-disable'
             },
 
             undo: {
@@ -523,7 +538,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
             });
 
             t.$edBox = $('<div/>', {
-                class: prefix + 'editor-box',
+                class: prefix + 'editor-box'
             });
 
             // $ta = Textarea
@@ -583,6 +598,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
             }
 
             t.semanticCode();
+            t.applyTagClasses();
 
             if (t.o.autogrowOnEnter) {
                 t.$ed.addClass(prefix + 'autogrow-on-enter');
@@ -697,7 +713,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                     }
                 })
                 .on('keyup focus', function () {
-                  if (!t.$ta.val().match(/<.*>/) && !t.$ed.html().match(/<.*>/)) {
+                    if (!t.$ta.val().match(/<.*>/) && !t.$ed.html().match(/<.*>/)) {
                         setTimeout(function () {
                             var block = t.isIE ? '<p>' : 'p';
                             t.doc.execCommand('formatBlock', false, block);
@@ -821,7 +837,8 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
 
 
         // Build a button and his action
-        buildBtn: function (btnName) { // btnName is name of the button
+        // @param btnName The name of the button
+        buildBtn: function (btnName) { // jshint ignore:line
             var t = this,
                 prefix = t.o.prefix,
                 btn = t.btnsDef[btnName],
@@ -1258,7 +1275,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                 return;
             }
 
-            if(revert) {
+            if (revert) {
                 oldTag = newTag;
                 newTag = tmpTag;
             }
@@ -1282,7 +1299,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                 }
                 $newTag.html($oldTag.html());
                 $oldTag.remove();
-                if(resetRange === true) {
+                if (resetRange === true) {
                     t.range.selectNodeContents($newTag.get(0));
                     t.range.collapse(false);
                 }
@@ -1411,50 +1428,41 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
             t.execCmd('unlink', undefined, undefined, true);
         },
         insertImage: function () {
-    var t = this;
-    t.saveRange();
+            var t = this;
+            t.saveRange();
 
-    var options = {
-        url: {
-            label: 'URL',
-            required: true
-        },
-        alt: {
-            label: t.lang.description,
-            value: t.getRangeText()
-        }
-    };
-	function isImage(url) {
-		return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
-	}
-	
-    if (t.o.imageWidthModalEdit) {
-        options.width = {};
-    }
+            var options = {
+                url: {
+                    label: 'URL',
+                    required: true
+                },
+                alt: {
+                    label: t.lang.description,
+                    value: t.getRangeText()
+                }
+            };
 
-    t.openModalInsert(t.lang.insertImage, options, function (v) { // v are values
-        // Check if the URL is an image
-        if (!isImage(v.url)) {
-            alert('The provided URL is not a valid image URL.'); // Alert the user
-            return false; // Stop the execution
-        }
+            if (t.o.imageWidthModalEdit) {
+                options.width = {};
+            }
 
-        t.execCmd('insertImage', v.url, false, true);
-        var $img = $('img[src="' + v.url + '"]:not([alt])', t.$box);
-        $img.attr('alt', v.alt);
+            t.openModalInsert(t.lang.insertImage, options, function (v) { // v are values
+                t.execCmd('insertImage', v.url, false, true);
+                var $img = $('img[src="' + v.url + '"]:not([alt])', t.$box);
+                $img.attr('alt', v.alt);
 
-        if (t.o.imageWidthModalEdit) {
-            $img.attr({
-                width: v.width
+                if (t.o.imageWidthModalEdit) {
+                    $img.attr({
+                        width: v.width
+                    });
+                }
+
+                t.syncCode();
+                t.$c.trigger('tbwchange');
+
+                return true;
             });
-        }
-
-        t.syncCode();
-        t.$c.trigger('tbwchange');
-
-        return true;
-    });
-},
+        },
         fullscreen: function () {
             var t = this,
                 prefix = t.o.prefix,
@@ -1483,6 +1491,13 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
             t.$c.trigger('tbw' + (isFullscreen ? 'open' : 'close') + 'fullscreen');
         },
 
+        applyTagClasses: function () {
+            var t = this;
+            for (const tag of Object.keys(t.o.tagClasses)) {
+                $(tag, t.$ed).addClass(t.o.tagClasses[tag]);
+            }
+            t.syncCode();
+        },
 
         /*
          * Call method of trumbowyg if exist
@@ -1497,7 +1512,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                 t.$ed.focus();
             }
 
-            if(cmd === 'strikethrough' && t.o.semantic) {
+            if (cmd === 'strikethrough' && t.o.semantic) {
                 t.semanticTag('strike', t.o.semanticKeepAttributes, true); // browsers cannot undo e.g. <del> as they expect <strike>
             }
 
@@ -1522,25 +1537,17 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
 
                     t.syncCode();
                     t.semanticCode(false, true);
-                    try {
-                        var listId = window.getSelection().focusNode;
-                        if(!$(window.getSelection().focusNode.parentNode).hasClass('trumbowyg-editor')){
-                            listId = window.getSelection().focusNode.parentNode;
-                        }
-                        var classes = t.o.tagClasses[param];
-                        if (classes) {
-                            $(listId).addClass(classes);
-                        }
-                    } catch (e) {
-
-                    }
-
                 }
 
                 if (cmd !== 'dropdown') {
                     t.updateButtonPaneStatus();
                     t.$c.trigger('tbwchange');
                 }
+            }
+
+            try {
+                t.applyTagClasses();
+            } catch (e) {
             }
         },
 
@@ -1618,7 +1625,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                 .css({
                     top: '-' + t.$btnPane.outerHeight(),
                     opacity: 0,
-                    paddingBottom: buildForm ? null : '5%',
+                    paddingBottom: buildForm ? null : '5%'
                 })
                 .appendTo($modal)
                 .animate({
@@ -1667,6 +1674,11 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
             var t = this,
                 prefix = t.o.prefix;
 
+            // Prevent multiple calls when having multiple editors in the same page
+            if (!t.$btnPane.hasClass(prefix + 'disable')) {
+                return;
+            }
+
             t.$btnPane.removeClass(prefix + 'disable');
             t.$overlay.off();
 
@@ -1702,13 +1714,13 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                 }).join(' ');
 
                 if (typeof field.type === 'function') {
-                  if (!field.name) {
-                    field.name = n;
-                  }
+                    if (!field.name) {
+                        field.name = n;
+                    }
 
-                  html += field.type(field, fieldId, prefix, lg);
+                    html += field.type(field, fieldId, prefix, lg);
 
-                  return;
+                    return;
                 }
 
                 html += '<div class="' + prefix + 'input-row">';
@@ -1716,7 +1728,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
                 html += '<div class="' + prefix + 'input-html">';
 
                 if ($.isPlainObject(field.options)) {
-                    html += '<select name="target">';
+                    html += '<select id="' + fieldId + '" name="' + n + '">';
                     html += Object.keys(field.options).map((optionValue) => {
                         return '<option value="' + optionValue + '" ' + (optionValue === field.value ? 'selected' : '') + '>' + field.options[optionValue] + '</option>';
                     }).join('');

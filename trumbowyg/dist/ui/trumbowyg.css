@@ -1,12 +1,18 @@
+/**
+ * Trumbowyg v2.31.0 - A lightweight WYSIWYG editor
+ * Default stylesheet for Trumbowyg editor
+ * ------------------------
+ * @link https://alex-d.github.io/Trumbowyg/
+ * @license MIT
+ * @author Alexandre Demode (Alex-D)
+ *         Twitter : @AlexandreDemode
+ *         Website : alex-d.fr
+ */
+
 #trumbowyg-icons,
 .trumbowyg-icons {
   overflow: hidden;
   visibility: hidden;
-  height: 0;
-  width: 0;
-}
-#trumbowyg-icons svg,
-.trumbowyg-icons svg {
   height: 0;
   width: 0;
 }
@@ -98,16 +104,6 @@
   color: transparent !important;
   text-shadow: 0 0 7px #333;
 }
-@media screen and (min-width: 0 \0 ) {
-  .trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {
-    color: rgba(200, 200, 200, 0.6) !important;
-  }
-}
-@supports (-ms-accelerator: true) {
-  .trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {
-    color: rgba(200, 200, 200, 0.6) !important;
-  }
-}
 .trumbowyg-box-blur .trumbowyg-editor img,
 .trumbowyg-box-blur .trumbowyg-editor hr {
   opacity: 0.2;
@@ -184,7 +180,7 @@
   right: 0;
   width: 100%;
   height: 1px;
-  background: #d7e0e2;
+  background: rgb(215.4454545455, 223.7727272727, 225.8545454545);
 }
 .trumbowyg-button-pane::after {
   top: 71px;
@@ -203,7 +199,7 @@
   content: " ";
   display: block;
   width: 1px;
-  background: #d7e0e2;
+  background: rgb(215.4454545455, 223.7727272727, 225.8545454545);
   margin: 0 5px;
   height: 35px;
   vertical-align: top;
@@ -241,7 +237,7 @@
   pointer-events: none;
 }
 .trumbowyg-button-pane.trumbowyg-disable .trumbowyg-button-group::before, .trumbowyg-disabled .trumbowyg-button-pane .trumbowyg-button-group::before {
-  background: #e3e9eb;
+  background: rgb(227.1909090909, 233.0454545455, 234.5090909091);
 }
 .trumbowyg-button-pane button:not(.trumbowyg-disable):hover,
 .trumbowyg-button-pane button:not(.trumbowyg-disable):focus,
@@ -381,14 +377,14 @@
   width: 150px;
   border-right: 1px solid #dedede;
   padding: 0 7px;
-  background-color: #fbfcfc;
+  background-color: rgb(250.6818181818, 251.5909090909, 251.8181818182);
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
 }
 .trumbowyg-modal-box .trumbowyg-input-infos label {
-  color: #69878f;
+  color: rgb(105, 135, 142.5);
   overflow: hidden;
   height: 27px;
   line-height: 27px;
@@ -422,7 +418,7 @@
   outline: 1px solid #95a5a6;
 }
 .trumbowyg-modal-box .trumbowyg-input-html input:focus, .trumbowyg-modal-box .trumbowyg-input-html textarea:focus, .trumbowyg-modal-box .trumbowyg-input-html select:focus {
-  background: #fbfcfc;
+  background: rgb(250.6818181818, 251.5909090909, 251.8181818182);
 }
 .trumbowyg-modal-box .trumbowyg-input-html input[type=checkbox] {
   width: 16px;
@@ -465,30 +461,30 @@
 }
 .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit {
   right: 110px;
-  background: #2bc06a;
+  background: rgb(43.1848, 191.5152, 106.0844);
 }
 .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:hover, .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:focus {
-  background: #40d47e;
+  background: rgb(63.648, 211.852, 126.494);
   outline: none;
 }
 .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:active {
-  background: #25a25a;
+  background: rgb(36.616, 162.384, 89.948);
 }
 .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset {
   color: #555;
-  background: #e6e6e6;
+  background: rgb(230.35, 230.35, 230.35);
 }
 .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:hover, .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:focus {
-  background: #fbfbfb;
+  background: rgb(250.75, 250.75, 250.75);
   outline: none;
 }
 .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:active {
-  background: #d5d5d5;
+  background: rgb(212.5, 212.5, 212.5);
 }
 
 .trumbowyg-overlay {
   position: absolute;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: hsla(0, 0%, 100%, 0.5);
   height: 100%;
   width: 100%;
   left: 0;
@@ -654,23 +650,13 @@ body.trumbowyg-body-fullscreen {
   border-color: #343434;
 }
 .trumbowyg-dark .trumbowyg-box {
-  border: 1px solid #343434;
+  border: 1px solid rgb(51.85, 51.85, 51.85);
 }
 .trumbowyg-dark .trumbowyg-box.trumbowyg-fullscreen {
   background: #111;
 }
 .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {
   text-shadow: 0 0 7px #ccc;
-}
-@media screen and (min-width: 0 \0 ) {
-  .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {
-    color: rgba(20, 20, 20, 0.6) !important;
-  }
-}
-@supports (-ms-accelerator: true) {
-  .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {
-    color: rgba(20, 20, 20, 0.6) !important;
-  }
 }
 .trumbowyg-dark .trumbowyg-box svg {
   fill: #fff;
@@ -679,19 +665,18 @@ body.trumbowyg-body-fullscreen {
 .trumbowyg-dark .trumbowyg-button-pane {
   background-color: #222;
   border-bottom-color: #343434;
-  color: #fff;
 }
 .trumbowyg-dark .trumbowyg-button-pane::before, .trumbowyg-dark .trumbowyg-button-pane::after {
-  background: #343434;
+  background: rgb(51.85, 51.85, 51.85);
 }
 .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-button-group:not(:empty)::after {
-  background-color: #343434;
+  background-color: rgb(51.85, 51.85, 51.85);
 }
 .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-button-group:not(:empty) .trumbowyg-fullscreen-button svg {
   color: transparent;
 }
 .trumbowyg-dark .trumbowyg-button-pane.trumbowyg-disable .trumbowyg-button-group::after {
-  background-color: #2a2a2a;
+  background-color: rgb(41.65, 41.65, 41.65);
 }
 .trumbowyg-dark .trumbowyg-button-pane button:not(.trumbowyg-disable):hover,
 .trumbowyg-dark .trumbowyg-button-pane button:not(.trumbowyg-disable):focus,
@@ -725,19 +710,19 @@ body.trumbowyg-body-fullscreen {
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-title {
   border-bottom: 1px solid #555;
   color: #fff;
-  background: #3c3c3c;
+  background: rgb(59.5, 59.5, 59.5);
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-input-row {
   border-color: #222;
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-input-infos {
   color: #eee;
-  background-color: #2f2f2f;
+  background-color: rgb(46.75, 46.75, 46.75);
   border-right-color: #222;
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-input-infos span {
   color: #eee;
-  background-color: #2f2f2f;
+  background-color: rgb(46.75, 46.75, 46.75);
   border-color: #343434;
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-input-infos span.trumbowyg-msg-error {
@@ -760,21 +745,21 @@ body.trumbowyg-body-fullscreen {
 .trumbowyg-dark .trumbowyg-modal-box select:focus,
 .trumbowyg-dark .trumbowyg-modal-box textarea:hover,
 .trumbowyg-dark .trumbowyg-modal-box textarea:focus {
-  border-color: #626262;
+  border-color: rgb(97.75, 97.75, 97.75);
 }
 .trumbowyg-dark .trumbowyg-modal-box input:focus,
 .trumbowyg-dark .trumbowyg-modal-box select:focus,
 .trumbowyg-dark .trumbowyg-modal-box textarea:focus {
-  background-color: #2f2f2f;
+  background-color: rgb(46.75, 46.75, 46.75);
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit {
-  background: #1b7943;
+  background: rgb(27.232, 120.768, 66.896);
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:hover, .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:focus {
-  background: #25a25a;
+  background: rgb(36.616, 162.384, 89.948);
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:active {
-  background: #176437;
+  background: rgb(22.54, 99.96, 55.37);
 }
 .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset {
   background: #333;
