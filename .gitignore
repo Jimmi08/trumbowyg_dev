@@ -399,3 +399,17 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 trumbowyg/prepros.config
+
+
+# e107 / secrets
+e107_config.php
+.env
+.env.*
+*.pem
+*.key
+*.ppk
+*.p12
+*.htpasswd
+*.sql
+credentials*
+secrets*
