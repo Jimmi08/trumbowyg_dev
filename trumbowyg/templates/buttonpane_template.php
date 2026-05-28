@@ -44,6 +44,7 @@ $BUTTONPANE_TEMPLATE['full'] =
 	['highlight'],
 	['template'],
 	['removeformat'],
+	['speechrecognition'],	
 	['e107mm'],
 	['fullscreen']
 ];
