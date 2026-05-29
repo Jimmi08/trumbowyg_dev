@@ -82,7 +82,7 @@ if ($enableOn)
 
 		e107::js("footer", e_PLUGIN . "trumbowyg/dist/langs/{$lang}{$min}.js", "jquery", 1);
 
-		$cssPlugins = ['colors', 'table', 'highlight', 'specialchars', 'emoji'];
+		$cssPlugins = ['colors', 'table', 'highlight', 'specialchars', 'emoji', 'e107mm'];
 
 		foreach ($cssPlugins as $key)
 		{
