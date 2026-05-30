@@ -45,7 +45,7 @@ $BUTTONPANE_TEMPLATE['full'] =
 	['template'],
 	['removeformat'],
 	['speechrecognition'],	
-	['e107mm'],
+	['e107mmImage', 'e107mmVideo', 'e107mmGlyph'],
 	['fullscreen']
 ];
 

@@ -147,19 +147,14 @@ if ($enableOn)
 		if ($darkmode)
 		{
 			// Select the existing Trumbowyg editor element
-			$darkmodeCode  = "const editor = document.querySelector('.trumbowyg-box');
-
-    				if (editor) {
-				
+			$darkmodeCode = "document.querySelectorAll('.trumbowyg-box').forEach(editor => {
+				if (!editor || editor.dataset.wrapped) return;
 					const wrapper = document.createElement('div');
-					wrapper.className = 'trumbowyg-dark';
-
-					// Wrap the editor
-					editor.parentNode.replaceChild(wrapper, editor);
-					wrapper.appendChild(editor);
-				 
-				 
-			}";
+						wrapper.className = 'trumbowyg-dark';
+							editor.parentNode.replaceChild(wrapper, editor);
+								wrapper.appendChild(editor);
+									editor.dataset.wrapped = '1';
+			});";
 
 			e107::js('footer-inline', $darkmodeCode, 'jquery', 5);
 		}
