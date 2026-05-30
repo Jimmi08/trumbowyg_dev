@@ -27,6 +27,13 @@
     max-width: 100% !important;
 }
 
+.trumbowyg-box svg,
+.trumbowyg-modal svg {
+  width: 19px !important;
+  height: 100%;
+
+}
+
 .trumbowyg-e107mmImage-button svg, .trumbowyg-e107mmVideo-button svg, .trumbowyg-e107mmGlyph-button svg  {
   color: #055781 !important;
   fill: #055781 !important;
