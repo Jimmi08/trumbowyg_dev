@@ -33,7 +33,9 @@
   height: 100%;
 
 }
-
+.trumbowyg-e107mm-icons {
+  display: none;
+}
 .trumbowyg-e107mmImage-button svg, .trumbowyg-e107mmVideo-button svg, .trumbowyg-e107mmGlyph-button svg  {
   color: #055781 !important;
   fill: #055781 !important;
