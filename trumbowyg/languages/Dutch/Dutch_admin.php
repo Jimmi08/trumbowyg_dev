@@ -113,7 +113,7 @@ define("LAN_TRUMBOWYG_PLUGIN_PREFORMATTED", "Vooraf geformatteerd");
 define("LAN_TRUMBOWYG_PLUGIN_PREFORMATTED_HELP", "Met de vooraf geformatteerde tekst plugin kan je vooraf opgemaakte tekst in de editor invoegen.");
 
 define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG", "Formaat wijzigen plugin");
-define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG_HELP", "je kan de grootte van afbeeldingen aanpassen door op de afbeelding te klikken en de rechterbenedenhoek (de witte hoeken) te verslepen.");
+define("LAN_TRUMBOWYG_PLUGIN_RESIZIMG_HELP", "Je kan de grootte van afbeeldingen aanpassen door op de afbeelding te klikken en de rechterbenedenhoek (de witte hoeken) te verslepen.");
 
 define("LAN_TRUMBOWYG_PLUGIN_RUBY", "Ruby");
 define("LAN_TRUMBOWYG_PLUGIN_RUBY_HELP", "Met de Ruby plugin kan je Ruby-annotaties aan je inhoud toevoegen.");
